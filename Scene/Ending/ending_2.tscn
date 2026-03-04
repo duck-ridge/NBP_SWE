@@ -1,0 +1,43 @@
+[gd_scene load_steps=3 format=3 uid="uid://dk8ahx7405wpg"]
+
+[ext_resource type="Script" path="res://Scene/Ending/ending_2.gd" id="1_ctdue"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="2_6pbjb"]
+
+[node name="Ending2" type="Node2D"]
+script = ExtResource("1_ctdue")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = -20.0
+offset_right = 33.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6pbjb")
+theme_override_font_sizes/font_size = 24
+text = "Ending 2
+Graznovia WIN
+But meanwhile you were found dead on the toilet
+Graznovia 占据舆论上风
+与此同时你被发现死在马桶上"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_6pbjb")
+theme_override_font_sizes/font_size = 24
+text = "Try lose again!
+再失败一次!"
+icon_alignment = 1
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Button" to="." method="_on_button_pressed"]

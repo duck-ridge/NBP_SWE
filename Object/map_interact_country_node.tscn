@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cav46nrujtqxa"]
+
+[ext_resource type="Script" path="res://Object/map_interact_country_node.gd" id="1_kgdjf"]
+
+[node name="MapInteract_UA_3" type="Node2D"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(510, 144)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_kgdjf")
+state_outline = PackedVector2Array(0, 0)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-52, 102, -14, 112, 58, 28, 126, 114, 34, 256, -192, 184)
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

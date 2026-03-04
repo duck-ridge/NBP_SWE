@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://curx8wq0wywcj"]
+
+[ext_resource type="Script" path="res://Global/bgmsystem.gd" id="1_26nsb"]
+[ext_resource type="AudioStream" uid="uid://ctx7ee1k4f03t" path="res://Asset/Sound/prologue_bgm.mp3" id="1_tprjy"]
+[ext_resource type="AudioStream" uid="uid://dc43nlbph811e" path="res://Asset/Sound/Kontekst.mp3" id="3_ttubs"]
+
+[node name="BGM" type="Node2D"]
+script = ExtResource("1_26nsb")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_tprjy")
+
+[node name="MainBGM" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ttubs")

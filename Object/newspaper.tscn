@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://ca3c8oyiylqme"]
+
+[ext_resource type="Texture2D" uid="uid://d0yl6md2fcta3" path="res://Asset/OfficeStuff/NewspaperEmpty.png" id="1_7mwse"]
+[ext_resource type="Script" path="res://Object/newspaper.gd" id="1_kgnib"]
+[ext_resource type="Texture2D" uid="uid://bqcs8m32eej6v" path="res://Asset/OfficeStuff/NewspaperPicEmpty.png" id="2_7lf4r"]
+[ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="3_mgebh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8bcm"]
+size = Vector2(106, 124)
+
+[node name="Newspaper" type="Node2D"]
+script = ExtResource("1_kgnib")
+metadata/_edit_group_ = true
+
+[node name="NewspaperEmpty" type="Sprite2D" parent="."]
+texture = ExtResource("1_7mwse")
+
+[node name="PicEmpty" type="Sprite2D" parent="."]
+modulate = Color(0.871141, 0.871141, 0.871141, 1)
+position = Vector2(67, 26)
+texture = ExtResource("2_7lf4r")
+
+[node name="PicAdd" type="Sprite2D" parent="."]
+position = Vector2(67, 26)
+texture = ExtResource("3_mgebh")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(67, 26)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_q8bcm")
+
+[node name="TitleGroup" type="Node2D" parent="."]
+
+[node name="NewspaperPack" type="Node2D" parent="."]
+
+[node name="NewsPic" type="Sprite2D" parent="NewspaperPack"]
+
+[node name="NewsDescription" type="RichTextLabel" parent="NewspaperPack"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]

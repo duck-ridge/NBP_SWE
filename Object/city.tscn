@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://dabcmclod1n6x"]
+
+[ext_resource type="Texture2D" uid="uid://dtaqmcc441pl8" path="res://Asset/Map/rim.png" id="1_lvrw5"]
+[ext_resource type="Script" path="res://Object/city.gd" id="1_xcks7"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="3_ndewv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_em104"]
+radius = 29.0689
+
+[node name="City" type="Node2D" groups=["city"]]
+script = ExtResource("1_xcks7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.329412, 0.313726, 1)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_lvrw5")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_em104")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 104.0
+offset_bottom = 40.0
+mouse_filter = 1
+
+[node name="Label" type="Label" parent="Control"]
+visible = false
+layout_mode = 0
+offset_top = 20.0
+offset_right = 88.0
+offset_bottom = 92.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ndewv")
+theme_override_font_sizes/font_size = 12
+text = "City:
+Event: 
+Journalist: 
+Turn: (0/2)
+Status:
+"
+
+[node name="MissionName" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = -23.0
+offset_top = -46.0
+offset_right = 25.0
+offset_bottom = -31.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_ndewv")
+theme_override_font_sizes/font_size = 12
+text = "水门事件"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,164 @@
+[gd_scene load_steps=11 format=3 uid="uid://bfy2kfb4yug8w"]
+
+[ext_resource type="Script" path="res://Object/drag_and_drop.gd" id="1_4k1ec"]
+[ext_resource type="Script" path="res://Object/map_interact_country_node.gd" id="2_6xc4s"]
+[ext_resource type="Texture2D" uid="uid://du5ym01w2v6qx" path="res://Asset/Map/UA_map/UA_4.png" id="4_1jcoa"]
+[ext_resource type="Texture2D" uid="uid://c27qagcj4k4h0" path="res://Asset/Map/UA_map/UA_5.png" id="7_khw8m"]
+[ext_resource type="Texture2D" uid="uid://crtj2hwcyb0wm" path="res://Asset/Map/UA_map/UA_8.png" id="10_lgj5m"]
+[ext_resource type="PackedScene" uid="uid://b03vwnv1ri2gw" path="res://Object/toggle_news.tscn" id="10_txo0f"]
+[ext_resource type="Texture2D" uid="uid://cb714f17xcaiv" path="res://Asset/Map/UA_map/UA_9.png" id="11_4saeq"]
+[ext_resource type="Texture2D" uid="uid://2vu262du80lh" path="res://Asset/Map/UA_map/UA_10.png" id="12_r6prx"]
+[ext_resource type="Texture2D" uid="uid://lrw4uev7d4qi" path="res://Asset/Map/UA_map/UA_11.png" id="13_wjwxh"]
+[ext_resource type="Texture2D" uid="uid://cskq6qj86nu7d" path="res://Asset/Map/UA_map/UA_12.png" id="14_nukoc"]
+
+[node name="DragDropSystem" type="Node2D"]
+script = ExtResource("1_4k1ec")
+
+[node name="MapAllBackUp" type="Node2D" parent="."]
+visible = false
+
+[node name="MapAll" type="Node2D" parent="."]
+position = Vector2(-42, -33)
+
+[node name="MapInteract_UA_1" type="Node2D" parent="MapAll"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-11, 75)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("4_1jcoa")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MapAll/MapInteract_UA_1"]
+texture = ExtResource("4_1jcoa")
+
+[node name="Area2D" type="Area2D" parent="MapAll/MapInteract_UA_1"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapAll/MapInteract_UA_1/Area2D"]
+polygon = PackedVector2Array(-72, 90, -150, 184, -50, 254, 48, 216, 110, 90, 72, 28, -10, 102)
+
+[node name="MapInteract_UA_2" type="Node2D" parent="MapAll"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-11, 75)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("7_khw8m")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MapAll/MapInteract_UA_2"]
+texture = ExtResource("7_khw8m")
+
+[node name="Area2D" type="Area2D" parent="MapAll/MapInteract_UA_2"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapAll/MapInteract_UA_2/Area2D"]
+polygon = PackedVector2Array(102, 64, 108, 104, 130, 102, 188, 152, 214, 136, 260, 126, 314, 54, 284, 16, 236, 26, 258, -24, 228, -40, 194, 4, 186, 36, 146, 60)
+
+[node name="MapInteract_UA_3" type="Node2D" parent="MapAll"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-11, 75)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("10_lgj5m")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MapAll/MapInteract_UA_3"]
+texture = ExtResource("10_lgj5m")
+
+[node name="Area2D" type="Area2D" parent="MapAll/MapInteract_UA_3"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapAll/MapInteract_UA_3/Area2D"]
+polygon = PackedVector2Array(68, -264, 50, -208, 44, 10, 98, 16, 114, 56, 150, 62, 218, -12, 258, -128, 214, -204, 160, -196, 152, -228, 192, -304, 186, -342, 114, -296)
+
+[node name="MapInteract_UA_4" type="Node2D" parent="MapAll"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-11, 75)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("11_4saeq")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MapAll/MapInteract_UA_4"]
+texture = ExtResource("11_4saeq")
+
+[node name="Area2D" type="Area2D" parent="MapAll/MapInteract_UA_4"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapAll/MapInteract_UA_4/Area2D"]
+polygon = PackedVector2Array(-154, -372, -210, -338, -202, -222, -146, -182, -132, -82, -44, -104, 4, -74, 54, -102, 70, -282, -10, -270, -72, -302, -88, -390)
+
+[node name="MapInteract_UA_5" type="Node2D" parent="MapAll"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-11, 75)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("12_r6prx")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="MapAll/MapInteract_UA_5"]
+texture = ExtResource("12_r6prx")
+
+[node name="Area2D" type="Area2D" parent="MapAll/MapInteract_UA_5"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MapAll/MapInteract_UA_5/Area2D"]
+polygon = PackedVector2Array(82, 132, 56, 196, 94, 262, 256, 290, 306, 224, 336, 256, 396, 196, 390, 138, 428, 114, 318, 56, 206, 144, 128, 114)
+
+[node name="toggle_news" parent="." instance=ExtResource("10_txo0f")]
+z_index = 6
+position = Vector2(-3, 674)
+scale = Vector2(4, 4)
+
+[node name="Label" type="Label" parent="toggle_news"]
+offset_left = 23.25
+offset_top = -16.5
+offset_right = 63.25
+offset_bottom = 6.5
+text = "1. click your peach or cyan news
+2. click a state on the map above"
+
+[node name="backup" type="Node2D" parent="."]
+visible = false
+
+[node name="MapInteract_UA_7" type="Node2D" parent="backup"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-53, 42)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("14_nukoc")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="backup/MapInteract_UA_7"]
+texture = ExtResource("14_nukoc")
+
+[node name="Area2D" type="Area2D" parent="backup/MapInteract_UA_7"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="backup/MapInteract_UA_7/Area2D"]
+polygon = PackedVector2Array(136, 274, 106, 288, 94, 318, 68, 328, 76, 376, -22, 416, -22, 454, 60, 462, 80, 426, 102, 426, 148, 474, 212, 492, 266, 412, 264, 370, 260, 284)
+
+[node name="MapInteract_UA_6" type="Node2D" parent="backup"]
+modulate = Color(0.8, 0.8, 0.8, 1)
+position = Vector2(-53, 42)
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_6xc4s")
+state_map = ExtResource("13_wjwxh")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="backup/MapInteract_UA_6"]
+texture = ExtResource("13_wjwxh")
+
+[node name="Area2D" type="Area2D" parent="backup/MapInteract_UA_6"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="backup/MapInteract_UA_6/Area2D"]
+polygon = PackedVector2Array(-130, -80, -114, -32, -136, -6, -92, 100, -76, 88, -16, 108, 76, 26, 36, 8, 46, -86, 20, -96, 14, -70, -4, -66, -38, -124, -54, -88, -68, -96)
+
+[connection signal="input_event" from="MapAll/MapInteract_UA_1/Area2D" to="MapAll/MapInteract_UA_1" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MapAll/MapInteract_UA_1/Area2D" to="MapAll/MapInteract_UA_1" method="_on_area_2d_mouse_entered"]
+[connection signal="input_event" from="MapAll/MapInteract_UA_2/Area2D" to="MapAll/MapInteract_UA_2" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MapAll/MapInteract_UA_2/Area2D" to="MapAll/MapInteract_UA_2" method="_on_area_2d_mouse_entered"]
+[connection signal="input_event" from="MapAll/MapInteract_UA_3/Area2D" to="MapAll/MapInteract_UA_3" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MapAll/MapInteract_UA_3/Area2D" to="MapAll/MapInteract_UA_3" method="_on_area_2d_mouse_entered"]
+[connection signal="input_event" from="MapAll/MapInteract_UA_4/Area2D" to="MapAll/MapInteract_UA_4" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MapAll/MapInteract_UA_4/Area2D" to="MapAll/MapInteract_UA_4" method="_on_area_2d_mouse_entered"]
+[connection signal="input_event" from="MapAll/MapInteract_UA_5/Area2D" to="MapAll/MapInteract_UA_5" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="MapAll/MapInteract_UA_5/Area2D" to="MapAll/MapInteract_UA_5" method="_on_area_2d_mouse_entered"]
+[connection signal="input_event" from="backup/MapInteract_UA_7/Area2D" to="backup/MapInteract_UA_7" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="backup/MapInteract_UA_7/Area2D" to="backup/MapInteract_UA_7" method="_on_area_2d_mouse_entered"]
+[connection signal="input_event" from="backup/MapInteract_UA_6/Area2D" to="backup/MapInteract_UA_6" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="backup/MapInteract_UA_6/Area2D" to="backup/MapInteract_UA_6" method="_on_area_2d_mouse_entered"]

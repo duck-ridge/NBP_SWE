@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://d24htmbsyoqt4"]
+
+[ext_resource type="Script" path="res://Scene/Scene/standby_screen.gd" id="1_5a8i7"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="1_tmet0"]
+[ext_resource type="Texture2D" uid="uid://cwtl6npi4yxm0" path="res://Asset/AboutUs/logoNBP.png" id="2_62o8u"]
+
+[node name="StandbyScreen" type="Node2D"]
+script = ExtResource("1_5a8i7")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[node name="Label1" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -232.0
+offset_right = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_tmet0")
+theme_override_font_sizes/font_size = 24
+text = "Welcome to National Bureau of Propaganda
+
+Ready to meet congressmen?
+
+"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -73.0
+offset_top = -232.0
+offset_right = 73.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("1_tmet0")
+theme_override_font_sizes/font_size = 34
+text = "
+
+
+
+Press <Anything> to Start"
+horizontal_alignment = 1
+
+[node name="NBP" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(558, 235)
+scale = Vector2(0.537764, 0.537764)
+texture = ExtResource("2_62o8u")

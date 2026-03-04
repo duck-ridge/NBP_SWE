@@ -1,0 +1,142 @@
+[gd_scene load_steps=9 format=3 uid="uid://b1xwbgptuf66m"]
+
+[ext_resource type="Texture2D" uid="uid://d0yl6md2fcta3" path="res://Asset/OfficeStuff/NewspaperEmpty.png" id="2_51ume"]
+[ext_resource type="Texture2D" uid="uid://bqcs8m32eej6v" path="res://Asset/OfficeStuff/NewspaperPicEmpty.png" id="3_w2fsf"]
+[ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="4_ls3ax"]
+[ext_resource type="Texture2D" uid="uid://bdpchfrpeo60c" path="res://Asset/PhotoArchive/PhotoTempNews2/news2_fulled.png" id="5_2jhtd"]
+[ext_resource type="Texture2D" uid="uid://byjxnfube5hnj" path="res://Asset/PhotoArchive/PhotoTempNews2/news2_captured.png" id="6_uv5t7"]
+[ext_resource type="Texture2D" uid="uid://4qvc7ysoo57m" path="res://Asset/PhotoArchive/PhotoTempNews2/news2_wounded.png" id="7_8ttbe"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="8_64m3d"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8bcm"]
+size = Vector2(106, 124)
+
+[node name="Interview" type="Node2D"]
+position = Vector2(657, 293)
+
+[node name="NewspaperEmpty" type="Sprite2D" parent="."]
+texture = ExtResource("2_51ume")
+
+[node name="PicEmpty" type="Sprite2D" parent="."]
+modulate = Color(0.871141, 0.871141, 0.871141, 1)
+position = Vector2(-0.999996, 12)
+scale = Vector2(1.5625, 0.92)
+texture = ExtResource("3_w2fsf")
+
+[node name="PicAdd" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(67, 26)
+texture = ExtResource("4_ls3ax")
+
+[node name="Area2D" type="Area2D" parent="."]
+visible = false
+position = Vector2(67, 26)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_q8bcm")
+
+[node name="TitleGroup" type="Node2D" parent="."]
+
+[node name="Picture" type="Node2D" parent="."]
+position = Vector2(0, 13)
+metadata/_edit_group_ = true
+
+[node name="News3Fulled" type="Sprite2D" parent="Picture"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("5_2jhtd")
+
+[node name="News3Captured" type="Sprite2D" parent="Picture"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("6_uv5t7")
+
+[node name="Area2D" type="Area2D" parent="Picture/News3Captured"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Picture/News3Captured/Area2D"]
+polygon = PackedVector2Array(-513.333, 6.66667, -460, -80, -433.333, -80, -393.333, -206.667, -253.333, -213.333, -260, -53.3333, -213.333, 80, -233.333, 233.333, -320, 333.333, -460, 340)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Picture/News3Captured/Area2D"]
+polygon = PackedVector2Array(-193.333, -166.667, -180, -60, -160, -53.3333, -126.667, -133.333, -33.3333, -126.667, 0, -33.3333, 46.6667, -100, 106.667, -86.6667, 126.667, 126.667, 226.667, 240, 473.333, 200, 513.333, 33.3333, 513.333, -146.667, 393.333, -253.333, 366.667, -340, 246.667, -340, 220, -226.667, 146.667, -126.667, 20, -133.333, -53.3333, -186.667, -33.3333, -300, -146.667, -333.333, -173.333, -233.333)
+
+[node name="News3Wounded" type="Sprite2D" parent="Picture"]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("7_8ttbe")
+
+[node name="Area2D" type="Area2D" parent="Picture/News3Wounded"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Picture/News3Wounded/Area2D"]
+polygon = PackedVector2Array(-126.667, -126.667, -166.667, -40, -213.333, 26.6667, -213.333, 200, -300, 313.333, -300, 340, 60, 340, 140, 186.667, 100, -86.6667, 46.6667, -93.3333, 6.66666, -26.6667, -26.6667, -60, -40, -120)
+
+[node name="Editor" type="Node2D" parent="."]
+position = Vector2(145, -10)
+
+[node name="VBoxRight" type="VBoxContainer" parent="Editor"]
+offset_left = -47.0
+offset_top = 11.0
+offset_right = 5.0
+offset_bottom = 51.0
+metadata/_edit_group_ = true
+
+[node name="Button1" type="Button" parent="Editor/VBoxRight"]
+custom_minimum_size = Vector2(52, 24)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_64m3d")
+theme_override_font_sizes/font_size = 12
+
+[node name="VBoxLeft" type="VBoxContainer" parent="Editor"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -355.0
+offset_top = 4.0
+offset_right = -277.0
+offset_bottom = 44.0
+grow_horizontal = 0
+metadata/_edit_group_ = true
+
+[node name="Button2" type="Button" parent="Editor/VBoxLeft"]
+custom_minimum_size = Vector2(2.08165e-12, 24)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("8_64m3d")
+theme_override_font_sizes/font_size = 12
+alignment = 2
+
+[node name="NewsPart" type="Node2D" parent="."]
+
+[node name="TitleLabel" type="Label" parent="NewsPart"]
+offset_left = -112.0
+offset_top = -121.0
+offset_right = 110.0
+offset_bottom = -68.0
+theme_override_fonts/font = ExtResource("8_64m3d")
+theme_override_font_sizes/font_size = 12
+horizontal_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NewsPart"]
+offset_left = -134.0
+offset_top = 73.0
+offset_right = 135.0
+offset_bottom = 167.0
+theme_override_fonts/normal_font = ExtResource("8_64m3d")
+theme_override_font_sizes/normal_font_size = 12
+
+[node name="TextIntervalTimer" type="Timer" parent="NewsPart"]
+wait_time = 0.05
+autostart = true
+
+[node name="SubmitBtn" type="Button" parent="."]
+offset_left = -133.0
+offset_top = -177.0
+offset_right = 34.0
+offset_bottom = -146.0
+pivot_offset = Vector2(81, 15)
+theme_override_fonts/font = ExtResource("8_64m3d")
+theme_override_font_sizes/font_size = 12
+disabled = true
+icon_alignment = 1
+
+[connection signal="input_event" from="Picture/News3Captured/Area2D" to="." method="_on_capturer_input_event"]
+[connection signal="input_event" from="Picture/News3Wounded/Area2D" to="." method="_on_wounded_input_event"]
+[connection signal="pressed" from="Editor/VBoxRight/Button1" to="." method="_on_button_1_pressed"]
+[connection signal="pressed" from="Editor/VBoxLeft/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="SubmitBtn" to="." method="_on_submit_btn_pressed"]

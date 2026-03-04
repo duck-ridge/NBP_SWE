@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjg5b85nxjdxs"]
+
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="1_jb026"]
+
+[node name="SelectManyHint" type="Label"]
+offset_left = -459.0
+offset_top = 91.0
+offset_right = -187.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("1_jb026")
+theme_override_font_sizes/font_size = 24
+text = "Not all photo perspective shown.
+Try to find another one."
+horizontal_alignment = 1

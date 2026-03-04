@@ -1,0 +1,112 @@
+[gd_scene load_steps=11 format=3 uid="uid://c1lba4pgn4whk"]
+
+[ext_resource type="Script" path="res://Newspapers/newspaper_news1_pro.gd" id="1_pyw06"]
+[ext_resource type="Texture2D" uid="uid://cri73soijykx6" path="res://Asset/NewspaperResult/newspaper1_pro.png" id="2_6gwu4"]
+[ext_resource type="Texture2D" uid="uid://bqcs8m32eej6v" path="res://Asset/OfficeStuff/NewspaperPicEmpty.png" id="3_w0k58"]
+[ext_resource type="Shader" path="res://Shader/newspic_filter.gdshader" id="4_n0fvi"]
+[ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="4_npiqt"]
+[ext_resource type="Texture2D" uid="uid://dhbv5wrndm3sv" path="res://Asset/PhotoArchive/PhotoTempNews1/photo_1_pro.png" id="5_r2yt4"]
+[ext_resource type="FontFile" uid="uid://betxkxwohtljd" path="res://Asset/Font/Tinos-Regular.ttf" id="7_e0r8t"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="7_m6fy0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8bcm"]
+size = Vector2(344, 449)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fwfsk"]
+shader = ExtResource("4_n0fvi")
+shader_parameter/gray_strength = 0.85
+shader_parameter/u_pixel_size = 90.0
+
+[node name="Newspaper" type="Node2D"]
+z_index = 3
+script = ExtResource("1_pyw06")
+metadata/_edit_group_ = true
+
+[node name="NewspaperEmpty" type="Sprite2D" parent="."]
+texture = ExtResource("2_6gwu4")
+
+[node name="PicEmpty" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.871141, 0.871141, 0.871141, 1)
+position = Vector2(67, 26)
+texture = ExtResource("3_w0k58")
+
+[node name="PicAdd" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(67, 26)
+texture = ExtResource("4_npiqt")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(67, 26)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-66, -24.5)
+shape = SubResource("RectangleShape2D_q8bcm")
+
+[node name="TitleGroup" type="Node2D" parent="."]
+
+[node name="NewspaperPack" type="Node2D" parent="."]
+visible = false
+
+[node name="NewsPic" type="Sprite2D" parent="NewspaperPack"]
+material = SubResource("ShaderMaterial_fwfsk")
+position = Vector2(67, 31)
+scale = Vector2(0.646875, 0.646875)
+texture = ExtResource("5_r2yt4")
+
+[node name="NewsDescription" type="RichTextLabel" parent="NewspaperPack"]
+offset_left = -123.0
+offset_top = -38.0
+offset_right = -4.0
+offset_bottom = 119.0
+
+[node name="NewsTitle1" type="Label" parent="NewspaperPack"]
+offset_left = -118.0
+offset_top = -124.0
+offset_right = 116.0
+offset_bottom = -101.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_m6fy0")
+text = "Acts of Mercy
+荣誉也是职责的一部分"
+horizontal_alignment = 1
+
+[node name="NewsTitle2" type="Label" parent="NewspaperPack"]
+offset_left = -117.0
+offset_top = -83.0
+offset_right = 117.0
+offset_bottom = -60.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_e0r8t")
+text = "A Soldier's Duty Beyond War"
+horizontal_alignment = 1
+
+[node name="NewsTime" type="Label" parent="NewspaperPack"]
+offset_left = 59.0
+offset_top = -171.0
+offset_right = 113.0
+offset_bottom = -148.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_e0r8t")
+text = "3 March"
+
+[node name="Content" type="Label" parent="NewspaperPack"]
+offset_left = -136.0
+offset_top = -39.0
+offset_right = 16.0
+offset_bottom = -16.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_m6fy0")
+theme_override_font_sizes/font_size = 12
+text = "Eaglenia的军队！
+文明的灯塔！
+只要敌人放下武器，必然对
+俘虏优待关怀。
+（图为Eagleni士兵给
+口渴的俘虏喂水）
+"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

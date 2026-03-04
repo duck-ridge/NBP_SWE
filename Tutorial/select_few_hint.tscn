@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dma7hc7lxc5q1"]
+
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="1_f3bes"]
+
+[node name="SelectFewHint" type="Label"]
+z_index = 6
+offset_left = 198.0
+offset_top = 91.0
+offset_right = 479.0
+offset_bottom = 142.0
+theme_override_fonts/font = ExtResource("1_f3bes")
+theme_override_font_sizes/font_size = 24
+text = "You've selected 
+too few elements."
+horizontal_alignment = 1

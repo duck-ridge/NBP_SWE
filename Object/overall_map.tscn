@@ -1,0 +1,127 @@
+[gd_scene load_steps=20 format=3 uid="uid://bg6dpgo23v8yu"]
+
+[ext_resource type="Script" path="res://Object/overall_map.gd" id="1_lj47m"]
+[ext_resource type="Texture2D" uid="uid://b23chw5lqbf2w" path="res://Asset/Map/map_downstate.png" id="1_v71sf"]
+[ext_resource type="PackedScene" uid="uid://dabcmclod1n6x" path="res://Object/city.tscn" id="2_lrotm"]
+[ext_resource type="Texture2D" uid="uid://37ideddudbf5" path="res://Asset/Map/worldmap.png" id="2_nsu4v"]
+[ext_resource type="Texture2D" uid="uid://qb231yom2flj" path="res://Asset/Map/map_upstate.png" id="3_grl5e"]
+[ext_resource type="Texture2D" uid="uid://b8gejwfg2nag8" path="res://Object/plane.png" id="5_fj1bd"]
+[ext_resource type="Texture2D" uid="uid://bvknvynuj5xmf" path="res://Asset/Map/UA_map/UA_1.png" id="7_7kw7x"]
+[ext_resource type="Texture2D" uid="uid://lnw402b80rbg" path="res://Asset/Map/UA_map/UA_2.png" id="8_m26dg"]
+[ext_resource type="Texture2D" uid="uid://cb7jn1vgt6l7x" path="res://Asset/Map/UA_map/UA_3.png" id="9_timsi"]
+[ext_resource type="Texture2D" uid="uid://du5ym01w2v6qx" path="res://Asset/Map/UA_map/UA_4.png" id="10_ek2o4"]
+[ext_resource type="Texture2D" uid="uid://c27qagcj4k4h0" path="res://Asset/Map/UA_map/UA_5.png" id="11_sv5gq"]
+[ext_resource type="Texture2D" uid="uid://bgi72cnnwencn" path="res://Asset/Map/UA_map/UA_6.png" id="12_rwr3u"]
+[ext_resource type="Texture2D" uid="uid://bqmesew6ipvim" path="res://Asset/Map/UA_map/UA_7.png" id="13_53k0q"]
+[ext_resource type="Texture2D" uid="uid://crtj2hwcyb0wm" path="res://Asset/Map/UA_map/UA_8.png" id="14_bw3h4"]
+[ext_resource type="Texture2D" uid="uid://cb714f17xcaiv" path="res://Asset/Map/UA_map/UA_9.png" id="15_7e54v"]
+[ext_resource type="Texture2D" uid="uid://2vu262du80lh" path="res://Asset/Map/UA_map/UA_10.png" id="16_xqo7t"]
+[ext_resource type="Texture2D" uid="uid://lrw4uev7d4qi" path="res://Asset/Map/UA_map/UA_11.png" id="17_fhig4"]
+[ext_resource type="Texture2D" uid="uid://cskq6qj86nu7d" path="res://Asset/Map/UA_map/UA_12.png" id="18_kmn0t"]
+[ext_resource type="Texture2D" uid="uid://idojshjmffjx" path="res://Asset/Map/UA_map/UA_13.png" id="19_nxy5r"]
+
+[node name="OverallMap" type="Node2D"]
+script = ExtResource("1_lj47m")
+
+[node name="Worldmap" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(600, 322)
+scale = Vector2(0.488166, 0.488166)
+texture = ExtResource("2_nsu4v")
+
+[node name="UA_MAP" type="Node2D" parent="."]
+position = Vector2(332, 165)
+scale = Vector2(0.5, 0.5)
+metadata/_edit_group_ = true
+
+[node name="Ua1" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("7_7kw7x")
+
+[node name="Ua2" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("8_m26dg")
+
+[node name="Ua3" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("9_timsi")
+
+[node name="Ua4" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("10_ek2o4")
+
+[node name="Ua5" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("11_sv5gq")
+
+[node name="Ua6" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("12_rwr3u")
+
+[node name="Ua7" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("13_53k0q")
+
+[node name="Ua8" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("14_bw3h4")
+
+[node name="Ua9" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("15_7e54v")
+
+[node name="Ua10" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("16_xqo7t")
+
+[node name="Ua11" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("17_fhig4")
+
+[node name="Ua12" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("18_kmn0t")
+
+[node name="Ua13" type="Sprite2D" parent="UA_MAP"]
+position = Vector2(590, 345)
+texture = ExtResource("19_nxy5r")
+
+[node name="MapDownstate" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(459, 491)
+texture = ExtResource("1_v71sf")
+
+[node name="MapUpstate" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(494, 292)
+texture = ExtResource("3_grl5e")
+
+[node name="CityNode" type="Node2D" parent="."]
+
+[node name="City1" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(486, 412)
+
+[node name="City2" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(700, 303)
+
+[node name="City3" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(422, 298)
+
+[node name="City4" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(709, 427)
+
+[node name="City5" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(616, 119)
+
+[node name="City6" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(659, 601)
+
+[node name="City7" parent="CityNode" instance=ExtResource("2_lrotm")]
+position = Vector2(829, 183)
+
+[node name="plane" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("5_fj1bd")
+
+[node name="JournalistPanel" type="Node2D" parent="."]

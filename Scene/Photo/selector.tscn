@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://byk3rnaaag85q"]
+
+[ext_resource type="Script" path="res://Scene/Photo/selector.gd" id="1_va0pi"]
+
+[node name="Selector" type="ColorRect"]
+z_index = 2
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(1, 1, 1, 0.243137)
+script = ExtResource("1_va0pi")

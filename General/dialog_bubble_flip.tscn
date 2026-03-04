@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://dpumv2rm2cm5"]
+
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="1_fvb34"]
+[ext_resource type="Texture2D" uid="uid://bw30rv881w72h" path="res://Asset/OfficeStuff/DialogueBubble/dialogninepatch.png" id="2_np1jv"]
+[ext_resource type="Texture2D" uid="uid://cug4kyp73mq1x" path="res://Asset/OfficeStuff/DialogueBubble/dialoghandle.png" id="3_616t1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7e17g"]
+texture = ExtResource("2_np1jv")
+texture_margin_left = 29.0
+texture_margin_top = 29.0
+texture_margin_right = 30.0
+texture_margin_bottom = 27.0
+
+[node name="DialogBubble" type="Control"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(0.6, 0.6)
+
+[node name="Content" type="Label" parent="."]
+custom_minimum_size = Vector2(300, 2.08165e-12)
+layout_mode = 0
+offset_left = -321.667
+offset_top = 21.6667
+offset_right = -21.6667
+offset_bottom = 100.667
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_fvb34")
+theme_override_font_sizes/font_size = 12
+theme_override_styles/normal = SubResource("StyleBoxTexture_7e17g")
+autowrap_mode = 3
+
+[node name="Handle" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -61.6667
+offset_right = -0.666664
+offset_bottom = 59.0
+texture = ExtResource("3_616t1")
+flip_v = true

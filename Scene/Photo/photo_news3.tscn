@@ -1,0 +1,189 @@
+[gd_scene load_steps=21 format=3 uid="uid://bqoe3xq7h6gb"]
+
+[ext_resource type="Script" path="res://Scene/Photo/photo_news3.gd" id="1_unmv3"]
+[ext_resource type="PackedScene" uid="uid://byk3rnaaag85q" path="res://Scene/Photo/selector.tscn" id="2_n27py"]
+[ext_resource type="Texture2D" uid="uid://kklgovcem5jt" path="res://Asset/OfficeStuff/newsphoto_envolop.png" id="3_c5kvc"]
+[ext_resource type="Texture2D" uid="uid://16h078fsgdjs" path="res://Asset/PhotoArchive/PhotoTempNews3/photo_3_full.jpg" id="4_f7ftl"]
+[ext_resource type="Texture2D" uid="uid://byh3qdqyo1q0u" path="res://Asset/PhotoArchive/PhotoTempNews3/photo_3_captured.png" id="5_g70ce"]
+[ext_resource type="Texture2D" uid="uid://djituhn1jxf4v" path="res://Asset/PhotoArchive/PhotoTempNews3/photo_3_tank.png" id="6_xsxby"]
+[ext_resource type="Texture2D" uid="uid://bl34mw42lsbgm" path="res://Asset/PhotoArchive/PhotoTempNews3/photo_3_soldier.png" id="7_0ns6o"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="8_h1fc0"]
+[ext_resource type="Texture2D" uid="uid://vbehwrdi8gnl" path="res://Asset/PhotoArchive/PhotoTempNews3/photo_3_pro.png" id="9_4o7oj"]
+[ext_resource type="Texture2D" uid="uid://p8qyou25coh3" path="res://Asset/Tutorial/click.png" id="10_xpja2"]
+[ext_resource type="Texture2D" uid="uid://bwk43j8mxlvmx" path="res://Asset/PhotoArchive/PhotoTempNews3/photo_3_con.png" id="11_0dbfp"]
+[ext_resource type="AudioStream" uid="uid://cyl2iaxxishn8" path="res://Asset/Sound/shutter.mp3" id="12_12u8l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tfun"]
+size = Vector2(161, 221)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m7b0y"]
+atlas = ExtResource("10_xpja2")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06jeg"]
+atlas = ExtResource("10_xpja2")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yiel8"]
+atlas = ExtResource("10_xpja2")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar0ji"]
+atlas = ExtResource("10_xpja2")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xywwj"]
+atlas = ExtResource("10_xpja2")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t8njl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m7b0y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_06jeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yiel8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar0ji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xywwj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt6l0"]
+size = Vector2(160, 218)
+
+[node name="PhotoTemp" type="Node2D"]
+position = Vector2(578, 310)
+script = ExtResource("1_unmv3")
+
+[node name="Selector" parent="." instance=ExtResource("2_n27py")]
+offset_right = 7.0
+offset_bottom = 7.0
+
+[node name="NewsPhotoEnvolop" type="Sprite2D" parent="."]
+visible = false
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("3_c5kvc")
+
+[node name="Sprite2D" type="Sprite2D" parent="NewsPhotoEnvolop"]
+position = Vector2(1.73913, 106.087)
+scale = Vector2(0.1422, 0.1422)
+
+[node name="NewsPhoto" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(6, 2)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_f7ftl")
+
+[node name="IndicatorA" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
+position = Vector2(-464, -78)
+metadata/_edit_group_ = true
+
+[node name="Photo1Captured" type="Sprite2D" parent="NewsPhoto/IndicatorA"]
+position = Vector2(464, 78)
+texture = ExtResource("5_g70ce")
+
+[node name="IndicatorB" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
+position = Vector2(-4, -100)
+metadata/_edit_group_ = true
+
+[node name="Photo1Tank" type="Sprite2D" parent="NewsPhoto/IndicatorB"]
+position = Vector2(4, 104)
+texture = ExtResource("6_xsxby")
+
+[node name="IndicatorC" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
+position = Vector2(244, -108)
+
+[node name="Photo1Soldier" type="Sprite2D" parent="NewsPhoto/IndicatorC"]
+position = Vector2(-24, 136)
+texture = ExtResource("7_0ns6o")
+metadata/_edit_group_ = true
+
+[node name="Button2" type="Button" parent="NewsPhoto"]
+visible = false
+custom_minimum_size = Vector2(2.08165e-12, 24)
+theme_override_fonts/font = ExtResource("8_h1fc0")
+text = "放假送到客户家卡洛斯都会分开"
+alignment = 2
+
+[node name="PhotoOutcome" type="Node2D" parent="."]
+
+[node name="PhotoPro" type="Node2D" parent="PhotoOutcome"]
+visible = false
+position = Vector2(23, -83)
+metadata/_edit_group_ = true
+
+[node name="PhotoProArea" type="Area2D" parent="PhotoOutcome/PhotoPro"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoOutcome/PhotoPro/PhotoProArea"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_0tfun")
+
+[node name="Sprite2D" type="Sprite2D" parent="PhotoOutcome/PhotoPro"]
+position = Vector2(1.81815, -2.49593)
+scale = Vector2(0.322754, 0.322754)
+texture = ExtResource("9_4o7oj")
+
+[node name="Click" type="AnimatedSprite2D" parent="PhotoOutcome/PhotoPro"]
+z_index = 6
+position = Vector2(67.2727, 100.909)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_t8njl")
+autoplay = "default"
+frame_progress = 0.000108141
+
+[node name="PhotoCon" type="Node2D" parent="PhotoOutcome"]
+visible = false
+position = Vector2(-74, -98)
+scale = Vector2(1.1, 1.1)
+metadata/_edit_group_ = true
+
+[node name="PhotoConArea" type="Area2D" parent="PhotoOutcome/PhotoCon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoOutcome/PhotoCon/PhotoConArea"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_wt6l0")
+
+[node name="Sprite2D" type="Sprite2D" parent="PhotoOutcome/PhotoCon"]
+position = Vector2(2.72728, 3.74397)
+scale = Vector2(0.333513, 0.333513)
+texture = ExtResource("11_0dbfp")
+
+[node name="Click" type="AnimatedSprite2D" parent="PhotoOutcome/PhotoCon"]
+z_index = 6
+position = Vector2(67.2727, 100.909)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_t8njl")
+autoplay = "default"
+frame_progress = 0.40561
+
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="AudioShutter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_12u8l")
+
+[node name="Caption" type="Label" parent="."]
+z_index = 5
+offset_left = -445.0
+offset_top = 216.0
+offset_right = 387.0
+offset_bottom = 240.0
+theme_override_fonts/font = ExtResource("8_h1fc0")
+theme_override_font_sizes/font_size = 24
+text = "Caption: Enemy force pictured alongside one soldier."
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="PhotoOutcome/PhotoPro/PhotoProArea" to="." method="_on_photo_pro_area_input_event"]
+[connection signal="input_event" from="PhotoOutcome/PhotoCon/PhotoConArea" to="." method="_on_photo_con_area_input_event"]

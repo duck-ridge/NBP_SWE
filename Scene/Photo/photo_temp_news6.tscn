@@ -1,0 +1,124 @@
+[gd_scene load_steps=15 format=3 uid="uid://d20dvb3j07u8o"]
+
+[ext_resource type="Script" path="res://Scene/Photo/photo_temp_news6.gd" id="1_bc1ad"]
+[ext_resource type="PackedScene" uid="uid://byk3rnaaag85q" path="res://Scene/Photo/selector.tscn" id="2_1rfo1"]
+[ext_resource type="Texture2D" uid="uid://kklgovcem5jt" path="res://Asset/OfficeStuff/newsphoto_envolop.png" id="3_kbyeu"]
+[ext_resource type="Texture2D" uid="uid://kslled8cuis7" path="res://General/icon.png" id="4_3r0ig"]
+[ext_resource type="Texture2D" uid="uid://7ivb54lqd1gj" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_full.png" id="5_k4iq6"]
+[ext_resource type="Texture2D" uid="uid://vvl4iimppjf4" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_attacker.png" id="6_iuvcf"]
+[ext_resource type="Texture2D" uid="uid://nwax40db8428" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_riot.png" id="7_ux78i"]
+[ext_resource type="Texture2D" uid="uid://b8awgsha1o2q7" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_victim.png" id="8_vxmkj"]
+[ext_resource type="Texture2D" uid="uid://eiyeabaouqkq" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_pro.png" id="9_58qrh"]
+[ext_resource type="Texture2D" uid="uid://cgcj7kr8h1um1" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_con.png" id="10_x4mga"]
+[ext_resource type="AudioStream" uid="uid://cyl2iaxxishn8" path="res://Asset/Sound/shutter.mp3" id="11_xsd4o"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="12_q4sa4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tfun"]
+size = Vector2(161, 221)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wt6l0"]
+size = Vector2(160, 218)
+
+[node name="PhotoTemp" type="Node2D"]
+position = Vector2(548, 400)
+script = ExtResource("1_bc1ad")
+
+[node name="Selector" parent="." instance=ExtResource("2_1rfo1")]
+offset_right = 7.0
+offset_bottom = 7.0
+
+[node name="NewsPhotoEnvolop" type="Sprite2D" parent="."]
+scale = Vector2(1.15, 1.15)
+texture = ExtResource("3_kbyeu")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="NewsPhotoEnvolop"]
+visible = false
+position = Vector2(-2.51882, -44)
+scale = Vector2(0.485757, 0.485757)
+texture = ExtResource("4_3r0ig")
+
+[node name="NewsPhoto" type="Sprite2D" parent="."]
+z_index = -1
+rotation = 1.5708
+texture = ExtResource("5_k4iq6")
+metadata/_edit_group_ = true
+
+[node name="IndicatorA" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
+position = Vector2(-139, -98)
+metadata/_edit_group_ = true
+
+[node name="Photo2ATKr" type="Sprite2D" parent="NewsPhoto/IndicatorA"]
+texture = ExtResource("6_iuvcf")
+
+[node name="IndicatorB" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
+position = Vector2(-68, 43)
+metadata/_edit_group_ = true
+
+[node name="Photo2Riot" type="Sprite2D" parent="NewsPhoto/IndicatorB"]
+texture = ExtResource("7_ux78i")
+
+[node name="IndicatorC" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
+position = Vector2(-55, 117)
+metadata/_edit_group_ = true
+
+[node name="Photo2Vct" type="Sprite2D" parent="NewsPhoto/IndicatorC"]
+texture = ExtResource("8_vxmkj")
+
+[node name="PhotoOutcome" type="Node2D" parent="."]
+
+[node name="PhotoPro" type="Node2D" parent="PhotoOutcome"]
+visible = false
+position = Vector2(-35, -25)
+metadata/_edit_group_ = true
+
+[node name="PhotoProArea" type="Area2D" parent="PhotoOutcome/PhotoPro"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoOutcome/PhotoPro/PhotoProArea"]
+position = Vector2(0.5, 0.5)
+shape = SubResource("RectangleShape2D_0tfun")
+
+[node name="Sprite2D" type="Sprite2D" parent="PhotoOutcome/PhotoPro"]
+texture = ExtResource("9_58qrh")
+
+[node name="PhotoCon" type="Node2D" parent="PhotoOutcome"]
+visible = false
+position = Vector2(-75, -121)
+metadata/_edit_group_ = true
+
+[node name="PhotoConArea" type="Area2D" parent="PhotoOutcome/PhotoCon"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PhotoOutcome/PhotoCon/PhotoConArea"]
+position = Vector2(1, -1)
+shape = SubResource("RectangleShape2D_wt6l0")
+
+[node name="Sprite2D" type="Sprite2D" parent="PhotoOutcome/PhotoCon"]
+texture = ExtResource("10_x4mga")
+
+[node name="Hints" type="Node2D" parent="."]
+
+[node name="AudioShutter" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_xsd4o")
+
+[node name="Caption" type="Label" parent="."]
+z_index = 5
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -137.0
+offset_top = 236.0
+offset_right = 127.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("12_q4sa4")
+theme_override_font_sizes/font_size = 24
+text = "Note: Skirmish erupts between the troop and residents."
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="input_event" from="PhotoOutcome/PhotoPro/PhotoProArea" to="." method="_on_photo_pro_area_input_event"]
+[connection signal="input_event" from="PhotoOutcome/PhotoCon/PhotoConArea" to="." method="_on_photo_con_area_input_event"]
