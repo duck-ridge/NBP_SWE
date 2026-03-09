@@ -104,13 +104,6 @@ metadata/_edit_group_ = true
 [node name="Photo1Head" type="Sprite2D" parent="NewsPhoto/IndicatorC"]
 texture = ExtResource("7_ef1vk")
 
-[node name="Button2" type="Button" parent="NewsPhoto"]
-visible = false
-custom_minimum_size = Vector2(2.08165e-12, 24)
-theme_override_fonts/font = ExtResource("9_wtmuf")
-text = "放假送到客户家卡洛斯都会分开"
-alignment = 2
-
 [node name="PhotoOutcome" type="Node2D" parent="."]
 
 [node name="PhotoPro" type="Node2D" parent="PhotoOutcome"]
@@ -177,7 +170,7 @@ offset_bottom = 273.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("9_wtmuf")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 22
 text = "Caption: Soldiers pictured alongside a POW."
 horizontal_alignment = 1
 vertical_alignment = 1

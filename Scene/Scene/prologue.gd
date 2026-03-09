@@ -18,16 +18,18 @@ extends Node2D
 func _ready():
 	$CanvasLayer/SkipBtn.modulate.a = 0.0
 	Bgmsystem.stop_bgm()
-	Bgmsystem.play_bgm()
+	#Bgmsystem.play_bgm()
 
 	basic_setting()
 	
 	await set_a_wait_timer(2)
-	play_prologue(motto1, rich_text_label1)
-	play_prologue(motto2, rich_text_label2)
-	color_reverse()
+	#play_prologue(motto1, rich_text_label1)
+	#play_prologue(motto2, rich_text_label2)
+	#color_reverse()
 	
 	skip_btn_reveal()
+	await set_a_wait_timer(6)
+	get_tree().change_scene_to_file(target_path)
 	
 func basic_setting():
 	text_interval.wait_time = 0.05

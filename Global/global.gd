@@ -43,6 +43,10 @@ signal is_dragging_news(state: bool, mouse_event_pos: Vector2)
 signal is_toggling_news(toggled: bool)
 
 
+signal case1_gunpic_paper_dissolve
+signal case1_waterpic_paper_dissolve
+signal case1_waterpic_paper_show
+signal show_case1_puzzle_bg
 
 #选中一个城市
 signal selected_city_signal(city_node)

@@ -14,6 +14,8 @@ extends Node2D
 @onready var newspaper6_pro = preload("res://Newspapers/newspaper_news6_pro.tscn")
 @onready var newspaper6_con = preload("res://Newspapers/newspaper_news6_con.tscn")
 
+@onready var casefile1 = preload("res://Scene/Case/case_1.tscn")
+
 @onready var PoliticalTendency = $Judge/PoliticalTendency
 
 var news1_pro_dialog_said: bool = false
@@ -65,8 +67,6 @@ func intro_two_diplomat():
 	tween.set_trans(Tween.TRANS_ELASTIC)
 	tween.tween_property($Judge/Graznovia, "position", Vector2(200, 420), 0.8).from(Vector2(200, 600))
 	tween.tween_property($Judge/Eagalnia, "position", Vector2(940, 420), 0.8).from(Vector2(940, 600))
-	#tween.tween_property($Judge/PoliticalTendency, "scale", Vector2(1, 1), 1.0).from(Vector2(0, 1))
-	
 	await tween.finished
 	allow_talk_click = true
 	dialog_system()
@@ -173,7 +173,27 @@ func destroy_newsfile(file_code: int):
 				for i in $NewspaperGroup.get_children():
 					i.queue_free()
 					
-					
+func set_casefile1():
+	var timer = Timer.new()
+	timer.wait_time = 2
+	get_node("Judge").add_child(timer)
+	timer.start()
+	await timer.timeout
+	timer.queue_free()
+		
+	dialog_all_pool += [
+		"Ser du den här bilden? Den publicerades i tidning A med rubriken ”En brutal handling.”",
+		"Ja, verkligen. En soldat som redan har blivit tillfångatagen borde inte behandlas så.",
+		"Men i en annan tidning används samma bild i en annan artikel, med rubriken ”En human handling.”",
+		"Vad bra att fångar behandlas humant… vänta, är det samma person på båda bilderna?",
+		"Vi kan pussla ihop vad som egentligen hände."	
+	]
+	dialog_system()
+	current_news_code = 1
+	var casefile1_inst = casefile1.instantiate()
+	casefile1_inst.position = Vector2(570, 300)
+	add_child(casefile1_inst)
+	
 func set_newsfile1():
 	current_news_code = 1
 	var newsfile1_inst = newsfile1.instantiate()
@@ -320,18 +340,7 @@ func inspect_map():
 	desk_down(false)
 	
 func set_news_property_with_timer(x: int):
-	#停止选中新闻作用
-	Global.emit_signal("is_toggling_news", false)
-	
-	$DragDropSystem.set_news_property(x)
-	#延时
-	var timer = Timer.new()
-	timer.wait_time = 1
-	add_child(timer)
-	timer.start()
-	await timer.timeout
-	timer.queue_free()
-	#Core
+	pass
 	
 	
 	
@@ -374,7 +383,7 @@ func click_newspaper(code_string: String):
 		"news3_pro":
 			destroy_newsfile(3)
 			map_gap()
-			set_news_property_with_timer(1)
+			#set_news_property_with_timer(1)
 			print("news3_pro")
 			Global.emit_signal("map_news_unreceived")
 		
@@ -383,13 +392,13 @@ func click_newspaper(code_string: String):
 		"news5_con":
 			destroy_newsfile(5)
 			map_gap()
-			set_news_property_with_timer(-1)
+			#set_news_property_with_timer(-1)
 			#map_news_unreceived signal可以将改变是否能给地图变颜色
 			Global.emit_signal("map_news_unreceived")
 		"news5_pro":
 			destroy_newsfile(5)
 			map_gap()
-			set_news_property_with_timer(1)
+			#set_news_property_with_timer(1)
 			print("news5_pro")
 			Global.emit_signal("map_news_unreceived")
 			
@@ -399,15 +408,15 @@ func click_newspaper(code_string: String):
 			
 			destroy_newsfile(6)
 			map_gap()
-			set_news_property_with_timer(-1)
-			pass
+			#set_news_property_with_timer(-1)
+			#pass
 		"news6_pro":
 			Global.emit_signal("map_news_unreceived")
 
 			destroy_newsfile(6)
 			map_gap()
-			set_news_property_with_timer(1)
-			pass
+			#set_news_property_with_timer(1)
+			#pass
 			
 			
 		
@@ -426,21 +435,13 @@ func hang_newspaper(code_string: String):
 			if news1_threat_dialog == true:
 				return
 			news1_threat_dialog = true
-			#dialog_number = 0
-			#dialog_all_pool = ["干得好",
-							#]
-							#
-			#dialog_system()
+
 		"news2_con":
 			if news2_threat_dialog == true:
 				return
 			news2_threat_dialog = true
 			
-			#dialog_number = 0
-			#dialog_all_pool = ["干得好",
-							#]
-							#
-			#dialog_system()
+
 		"news2_pro":
 			pass
 			
@@ -463,56 +464,19 @@ func dialog_say_something(dialog_char_num: int, dialog_content: String):
 			
 	dialog_z_index += 1
 var is_newsfile1_shown: bool = false
+var is_casefile1_shown: bool = false
 #var is_newsfile2_shown: bool = true
 var dialog_number: int = 0
 
-#var dialog_all_pool: Array = ["Welcome, you must be the new Director of the NBP.",
-							#"The National Bureau of Propaganda name says it all. You're in charge of political propaganda.",
-							#"It’s a dangerous job... very dangerous.",
-							#"I’m curious who did you piss off to get this lovely position?",
-							#"Did you just got lucky in the labor lottery?",
-							#"Have you check job description? HaHaHaHaHaHaHaHa",
-							#"Forgot to introduce myself. I’m Rump, representative of the world’s sole superpower, Eagalnia.",
-							#"And I’m Utin, the Graznovian diplomat assigned to your country.",
-							#"Every day, the world is filled with countless news stories. You’d better make sure Eagalnia likes them.",
-							#"And if your country's media smearing Graznovia... things could get unpleasant.",
-							#"You’re a smart one. Think about your predecessor.",
-							#"Your predecessor lasted just three days before being found dead on the toilet.",
-							#"Clearly a murder.",
-							#"I mean, who the hell sits on a toilet with their pants on?",
-							#"But hey, who cares",
-							#"This time, I’ve learned a lesson. I won’t bother remembering your name.",
-							#"Oh, look, a new fax just came in",
-							#"Let’s see how long this director manages to stay alive."]
-var dialog_all_pool: Array = ["Welcome, you must be the new Director of the NBP.",
-							"The National Bureau of Propaganda name says it all. You're in charge of political propaganda.",
-							
-							"It's a tough job... and very dangerous.",
-							"I'm curious why did you get this position?",
-							
-							#"Did you just got lucky in the labor lottery?",
-							#"Have you check job description? HaHaHaHaHaHaHaHa",
-							
-							"Forgot to introduce myself. I'm Cyan, representative of the dovish congressmen. We want peace.",
-							"And I’m Peach, from the hawkish committee, we believe war on terror should continue.",
-							
-							"No, Peach, this war is immoral. Don't you realize so many innocents people lost their home?",
-							"Listen, Cyan, innocents is a disguise, most of them are part time Terrorist!",
-							
-							"Director, I hope you can reveal the dark side of the war, and people will be our side.",
-							"Don't slander our brave soldiers fighting on the frontline. That is betrayal.",
-							#
-							#"We must stop this humanitarian crisis.",
-							#"We are protecting the REAL innocent people.",
-							#
-							"You will get the latest report from the frontline every day.",
-							"You need to add a sense of stance to these context-lacking, isolated news pieces.",
-							#
-							#"Let's stop the war",
-							#"We will end evil together!",
-							#
-							"Oh, look, a new fax just came in.",
-							"Let's see."]
+var dialog_all_pool: Array = ["Hej Bokang, jag märker att du spenderar mycket tid på sociala medier varje dag.",
+							"Verkligen. Från “Six Seven” till Iran – det händer saker hela tiden.",
+							"Många nyheter på sociala medier motsäger varandra – hur vet vi vad som är sant?",
+							"Precis. Vissa inlägg är vinklade och visar bara en sida för att påverka oss.",
+							"Folk kan vara kritiska mot det andra säger, men ifrågasätter sällan sina egna slutsatser.",
+							"Exakt. Att kunna avgöra vad som är trovärdigt kallas media literacy.",
+							"Kan du ge ett exempel?",
+							"Absolut, låt oss titta på ett."
+							]
 	
 func dialog_system():
 	allow_talk_click = false
@@ -530,24 +494,37 @@ func dialog_system():
 		timer.queue_free()
 			
 		var tween = create_tween()
-		tween.tween_property($Judge/Eagalnia/DialogBubble, "scale", Vector2.ZERO, 0.25).from_current()
-		tween.tween_property($Judge/Graznovia/DialogBubble, "scale", Vector2.ZERO, 0.25).from_current()
-		if is_newsfile1_shown != true:
-			is_newsfile1_shown = true
+		tween.tween_property($Judge/Eagalnia/DialogBubble, "scale", Vector2.ZERO, 0.25)
+		tween.tween_property($Judge/Graznovia/DialogBubble, "scale", Vector2.ZERO, 0.25)
+		if is_casefile1_shown != true:
+			is_casefile1_shown = true
 			
 			desk_raise()
-			set_newsfile1()
-
-
-		
-		if $SelectTutorial.visible != true:
-			$SelectTutorial.show()	
+			set_casefile1()
+			return
+		else:
+			Global.emit_signal("show_case1_puzzle_bg")
 		return
 		
 	dialog_say_something(dialog_number % 2, dialog_all_pool[dialog_number])
+	check_dialog_event(dialog_number)
 	dialog_number += 1
+
+
+var show_water_pic_page: int = 11
+var dissolve_case_pic_page: int = 12
+func check_dialog_event(dia_num: int):
+	match dia_num:
+		show_water_pic_page:
+			Global.emit_signal("case1_waterpic_paper_show")
+		dissolve_case_pic_page:
+			Global.emit_signal("case1_gunpic_paper_dissolve")
+			Global.emit_signal("case1_waterpic_paper_dissolve")
+
+			
+			
 var tutorial_over: bool = false
-func _input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("ui_click") or event.is_action_pressed("ui_accept"):
 		if allow_talk_click != true:
 			return
@@ -675,19 +652,7 @@ func pop_a_leader_sprite(leadernum: int):
 	elif leadernum == 1:
 		pass
 		
-		#var tween = create_tween()
-		#tween.tween_property($Judge/Trump, "position", Vector2(940, 80), 0.2).from(Vector2(940, 500))
-		#await tween.finished
-		
-		#$Judge/Trump.play("setup")
-		
-		#dialog_number = 0
-		#dialog_all_pool = [
-			#"Choose the photo which shows our mercy",
-			#"Shameless idiot, your troops are torturing the Pow",
-			#"You are not lying, it just part of truth.",
-		#]
-		#dialog_system()
+
 
 
 func create_a_timer(time: int):
@@ -735,12 +700,6 @@ func _on_skip_btn_pressed():
 
 
 func news_map_over():
-	var timer_map_over = Timer.new()
-	timer_map_over.wait_time = 0.8
-	get_node("DragDropSystem").add_child(timer_map_over)
-	timer_map_over.start()
-	await timer_map_over.timeout
-	timer_map_over.queue_free()
 	
 	match current_news_code:
 		1:
@@ -758,9 +717,6 @@ func news_map_over():
 	#desk_raise()
 	#desk_half_raise()
 	
-	
-	if $DragDropSystem.is_map_all_filled == true:
-		return
 	match current_news_code:
 		2:
 			set_newsfile2()

@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://mcnpecvnwtnv"]
+
+[ext_resource type="Script" path="res://Scene/Case/case_widget/gun_pic.gd" id="1_1rlvk"]
+[ext_resource type="Texture2D" uid="uid://b7sye42sqxxwv" path="res://Scene/Case/case_widget/case1_gunpic_paper.png" id="2_s1i54"]
+[ext_resource type="Texture2D" uid="uid://bga0lx7763y1v" path="res://Asset/PhotoArchive/PhotoTempNews1/photo_1_con.png" id="3_dd7ej"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xs441"]
+size = Vector2(158, 219)
+
+[node name="GunPic" type="Node2D"]
+script = ExtResource("1_1rlvk")
+
+[node name="newspaper" type="Sprite2D" parent="."]
+position = Vector2(-3.12499, -56.125)
+scale = Vector2(1.13232, 1.13232)
+texture = ExtResource("2_s1i54")
+
+[node name="pic" type="Sprite2D" parent="."]
+position = Vector2(-0.999971, -0.125031)
+texture = ExtResource("3_dd7ej")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(3.05176e-05, -27.25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, 27.5)
+shape = SubResource("RectangleShape2D_xs441")
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
