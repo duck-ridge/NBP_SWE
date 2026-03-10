@@ -15,6 +15,7 @@ extends Node2D
 @onready var newspaper6_con = preload("res://Newspapers/newspaper_news6_con.tscn")
 
 @onready var casefile1 = preload("res://Scene/Case/case_1.tscn")
+@onready var casefile2 = preload("res://Scene/Case/case_2.tscn")
 
 @onready var PoliticalTendency = $Judge/PoliticalTendency
 
@@ -173,7 +174,7 @@ func destroy_newsfile(file_code: int):
 				for i in $NewspaperGroup.get_children():
 					i.queue_free()
 					
-func set_casefile1():
+func set_casefile2():
 	var timer = Timer.new()
 	timer.wait_time = 2
 	get_node("Judge").add_child(timer)
@@ -184,53 +185,27 @@ func set_casefile1():
 	dialog_all_pool += [
 		"Herregud, det här ser ut som en katastrof.",
 		"Den här bilden togs under Detroit Race Riot of 1943. Hur trovärdig tycker du att den här nyheten är?",
+	]
+	dialog_system()
+	var casefile2_inst = casefile2.instantiate()
+	casefile2_inst.position = Vector2(570, 300)
+	add_child(casefile2_inst)
+
+func add_dialog_after_grok():
+	dialog_all_pool += [
 		"Snarare än att bara bedöma bilden bör vi fundera på hur trovärdig själva berättelsen är.",
 		"Varför säger du så?",
 		"Strängt taget ljuger inte nyheten, men den nämner nästan inget om bakgrunden eller sammanhanget till bilden.",
 		"Två unga män attackerar en svart man och visar upp sitt “resultat”, eller hur?",
 		"När vi ser en misstänkt bild på sociala medier kan det vara en idé att fråga AI.",
-		"@grok, är det sant?"
-	]
-	dialog_system()
-	current_news_code = 1
-	var casefile1_inst = casefile1.instantiate()
-	casefile1_inst.position = Vector2(570, 300)
-	add_child(casefile1_inst)
-	
-func set_newsfile1():
-	current_news_code = 1
-	var newsfile1_inst = newsfile1.instantiate()
-	newsfile1_inst.news_pro_pos = Vector2(200, 300)
-	newsfile1_inst.news_con_pos = Vector2(800, 300)
-	newsfile1_inst.position = Vector2(570, 1500)
-	add_child(newsfile1_inst)
-	newsfile1_inst.name = "NewsFileInst1"
-	
-	#文件袋滑入桌子
-	var tween = create_tween()
-	tween.set_parallel()
-	tween.set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_SINE)
-	tween.tween_property(newsfile1_inst, "position", Vector2(570, 460), 1).from_current()
-	tween.tween_property(newsfile1_inst, "rotation", 0, 1).from(-0.3)
-	tween.set_parallel(false)
-	
-	await tween.finished
-	newsfile1_inst.slide_abit()
-	
-	
-func set_newsfile2():	
-	print("Is it trrue")
-	current_news_code = 2
-	destroy_newsfile(1)
-	#摧毁上一个新闻
-	#if has_node("NewsFileInst2"):
-		#get_node("NewsFileInst2").queue_free()
-		#for i in $NewspaperGroup.get_children():
-			#i.queue_free()
+		"@grok, är det sant?"]
 
+func set_newsfile2():
+	current_news_code = 1
 	var newsfile2_inst = newsfile2.instantiate()
-	newsfile2_inst.position = Vector2(570, 420)
+	newsfile2_inst.news_pro_pos = Vector2(200, 300)
+	newsfile2_inst.news_con_pos = Vector2(800, 300)
+	newsfile2_inst.position = Vector2(570, 1500)
 	add_child(newsfile2_inst)
 	newsfile2_inst.name = "NewsFileInst2"
 	
@@ -239,18 +214,14 @@ func set_newsfile2():
 	tween.set_parallel()
 	tween.set_ease(Tween.EASE_IN)
 	tween.set_trans(Tween.TRANS_SINE)
-	
-	tween.tween_property(newsfile2_inst, "scale", Vector2.ONE, 1).from(Vector2.ZERO)
-	tween.tween_property(newsfile2_inst, "position", Vector2(570, 400), 1).from(Vector2(570, 100))
+	tween.tween_property(newsfile2_inst, "position", Vector2(570, 460), 1).from_current()
 	tween.tween_property(newsfile2_inst, "rotation", 0, 1).from(-0.3)
-	
 	tween.set_parallel(false)
 	
-	#摧毁新手教学
-	tween.tween_property($SelectTutorial, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0).from(Color(1.0, 1.0, 1.0, 1.0))
 	await tween.finished
-	$SelectTutorial.hide()
-
+	newsfile2_inst.slide_abit()
+	
+	
 func set_newsfile3():
 	#current_news_code = 3
 	##摧毁上一个新闻
@@ -466,8 +437,8 @@ func dialog_say_something(dialog_char_num: int, dialog_content: String):
 			$Judge/Eagalnia/DialogBubble/Content.z_index = dialog_z_index
 			
 	dialog_z_index += 1
-var is_newsfile1_shown: bool = false
-var is_casefile1_shown: bool = false
+var is_newsfile2_shown: bool = false
+var is_casefile2_shown: bool = false
 #var is_newsfile2_shown: bool = true
 var dialog_number: int = 0
 
@@ -497,11 +468,11 @@ func dialog_system():
 		var tween = create_tween()
 		tween.tween_property($Judge/Eagalnia/DialogBubble, "scale", Vector2.ZERO, 0.25)
 		tween.tween_property($Judge/Graznovia/DialogBubble, "scale", Vector2.ZERO, 0.25)
-		if is_casefile1_shown != true:
-			is_casefile1_shown = true
+		if is_casefile2_shown != true:
+			is_casefile2_shown = true
 			
 			desk_raise()
-			set_casefile1()
+			set_casefile2()
 			return
 		else:
 			Global.emit_signal("show_case1_puzzle_bg")
@@ -512,16 +483,16 @@ func dialog_system():
 	dialog_number += 1
 
 
-var show_water_pic_page: int = 11
-var dissolve_case_pic_page: int = 12
+var show_grok: int = 12
+var show_rating: int = 6
 func check_dialog_event(dia_num: int):
+	print(dia_num)
 	match dia_num:
-		show_water_pic_page:
-			Global.emit_signal("case1_waterpic_paper_show")
-		dissolve_case_pic_page:
-			Global.emit_signal("case1_gunpic_paper_dissolve")
-			Global.emit_signal("case1_waterpic_paper_dissolve")
-
+		show_grok:
+			Global.emit_signal("case2_grok_show")
+		show_rating:
+			Global.emit_signal("case2_rating_show")
+			
 			
 			
 var tutorial_over: bool = false

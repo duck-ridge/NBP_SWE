@@ -1,0 +1,86 @@
+[gd_scene load_steps=6 format=3 uid="uid://bugsh30cnwmqy"]
+
+[ext_resource type="Script" path="res://Scene/Case/case_2.gd" id="1_6fjdn"]
+[ext_resource type="Texture2D" uid="uid://dl0snkwkgsqf7" path="res://Scene/Case/case2_widget/case2pic.png" id="2_5j478"]
+[ext_resource type="Texture2D" uid="uid://c18e5gmntfun5" path="res://Scene/Case/case2_widget/detroit_news.png" id="2_lmvn2"]
+[ext_resource type="Texture2D" uid="uid://of684kyce5tu" path="res://Scene/Case/case2_widget/Grok.png" id="4_dqqs1"]
+[ext_resource type="Texture2D" uid="uid://dkxwrndspf2kj" path="res://Scene/Case/case2_widget/Context.png" id="5_u0mrj"]
+
+[node name="Case2" type="Node2D"]
+script = ExtResource("1_6fjdn")
+
+[node name="Illustration" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 200.0
+offset_top = -153.0
+offset_right = 430.0
+offset_bottom = 125.0
+
+[node name="RiotPic" type="Node2D" parent="."]
+
+[node name="DetroitNews" type="Sprite2D" parent="RiotPic"]
+position = Vector2(2.01617, -93)
+texture = ExtResource("2_lmvn2")
+
+[node name="Riotpic" type="Sprite2D" parent="RiotPic"]
+position = Vector2(-0.0806915, -49.625)
+scale = Vector2(0.214588, 0.214588)
+texture = ExtResource("2_5j478")
+
+[node name="Grok" type="Sprite2D" parent="RiotPic"]
+position = Vector2(-349, -7)
+rotation = -0.260054
+scale = Vector2(0.479757, 0.479757)
+texture = ExtResource("4_dqqs1")
+
+[node name="Context" type="Sprite2D" parent="RiotPic"]
+position = Vector2(374, 17)
+rotation = 0.217105
+scale = Vector2(0.479757, 0.479757)
+texture = ExtResource("5_u0mrj")
+
+[node name="ReliableList" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+
+[node name="1" type="Button" parent="ReliableList"]
+offset_left = -120.0
+offset_top = -1.0
+offset_right = -80.0
+offset_bottom = 39.0
+text = "1"
+
+[node name="2" type="Button" parent="ReliableList"]
+offset_left = -70.0
+offset_right = -30.0
+offset_bottom = 40.0
+text = "2
+"
+
+[node name="3" type="Button" parent="ReliableList"]
+offset_left = -21.0
+offset_right = 19.0
+offset_bottom = 40.0
+text = "3
+"
+
+[node name="4" type="Button" parent="ReliableList"]
+offset_left = 37.0
+offset_right = 77.0
+offset_bottom = 40.0
+text = "4
+"
+
+[node name="5" type="Button" parent="ReliableList"]
+offset_left = 90.0
+offset_right = 130.0
+offset_bottom = 40.0
+text = "5
+"
+
+[connection signal="pressed" from="ReliableList/1" to="." method="_on__pressed"]
+[connection signal="pressed" from="ReliableList/2" to="." method="_on__pressed"]
+[connection signal="pressed" from="ReliableList/3" to="." method="_on__pressed"]
+[connection signal="pressed" from="ReliableList/4" to="." method="_on__pressed"]
+[connection signal="pressed" from="ReliableList/5" to="." method="_on__pressed"]

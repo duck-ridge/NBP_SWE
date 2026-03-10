@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://o2p56qa0sxsh"
-path="res://.godot/imported/debris1.png-999078ff8d4ed93f085e44881a106822.ctex"
+path="res://.godot/imported/debris1.png-f307c0a5f9c4ce81ff050b4e6d54d123.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/Case/case_widget/debris1.png"
-dest_files=["res://.godot/imported/debris1.png-999078ff8d4ed93f085e44881a106822.ctex"]
+source_file="res://Scene/Case/case1_widget/debris1.png"
+dest_files=["res://.godot/imported/debris1.png-f307c0a5f9c4ce81ff050b4e6d54d123.ctex"]
 
 [params]
 

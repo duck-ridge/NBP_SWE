@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cc1o43lffqg2l"
-path="res://.godot/imported/debris2.png-0cf7cb2fcf5300a8b5631fe4560dc401.ctex"
+uid="uid://c2lmhv6a2pnxo"
+path="res://.godot/imported/GrokCard.png-46e35e304d5c30af1034ff2f189a31a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Scene/Case/case_widget/debris2.png"
-dest_files=["res://.godot/imported/debris2.png-0cf7cb2fcf5300a8b5631fe4560dc401.ctex"]
+source_file="res://Scene/Case/case2_widget/GrokCard.png"
+dest_files=["res://.godot/imported/GrokCard.png-46e35e304d5c30af1034ff2f189a31a3.ctex"]
 
 [params]
 
