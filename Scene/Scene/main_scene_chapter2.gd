@@ -182,10 +182,14 @@ func set_casefile1():
 	timer.queue_free()
 		
 	dialog_all_pool += [
-		"test1",
-		"test1",
-		"test1",
-		"test1",
+		"Herregud, det här ser ut som en katastrof.",
+		"Den här bilden togs under Detroit Race Riot of 1943. Hur trovärdig tycker du att den här nyheten är?",
+		"Snarare än att bara bedöma bilden bör vi fundera på hur trovärdig själva berättelsen är.",
+		"Varför säger du så?",
+		"Strängt taget ljuger inte nyheten, men den nämner nästan inget om bakgrunden eller sammanhanget till bilden.",
+		"Två unga män attackerar en svart man och visar upp sitt “resultat”, eller hur?",
+		"När vi ser en misstänkt bild på sociala medier kan det vara en idé att fråga AI.",
+		"@grok, är det sant?"
 	]
 	dialog_system()
 	current_news_code = 1
@@ -467,15 +471,13 @@ var is_casefile1_shown: bool = false
 #var is_newsfile2_shown: bool = true
 var dialog_number: int = 0
 
-var dialog_all_pool: Array = ["Hej Bokang, jag märker att du spenderar mycket tid på sociala medier varje dag.",
-							"Verkligen. Från “Six Seven” till Iran – det händer saker hela tiden.",
-							"Många nyheter på sociala medier motsäger varandra – hur vet vi vad som är sant?",
-							"Precis. Vissa inlägg är vinklade och visar bara en sida för att påverka oss.",
-							"Folk kan vara kritiska mot det andra säger, men ifrågasätter sällan sina egna slutsatser.",
-							"Exakt. Att kunna avgöra vad som är trovärdigt kallas media literacy.",
-							"Kan du ge ett exempel?",
-							"Absolut, låt oss titta på ett."
-							]
+var dialog_all_pool: Array = [
+	"Precis. Även om en bild inte är manipulerad kan den ändå ligga långt från verkligheten.", 
+	"Faktum är att många bilder kan vara vilseledande och få oss att dra fel slutsatser.",
+	"Därför borde vi inte bara lita på det vi ser direkt.",
+	"Vi bör också kolla bakgrunden, källan och hur bilden används.",
+	"Den här bilden är ett bra exempel.",
+	]
 	
 func dialog_system():
 	allow_talk_click = false

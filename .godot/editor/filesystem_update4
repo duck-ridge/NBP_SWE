@@ -19,3 +19,5 @@ res://Scene/Case/case_widget/puzzle_bg.tscn
 res://Scene/Case/case_widget/gun_pic.gd
 res://Scene/Scene/main_scene_chapter2.tscn
 res://Scene/Scene/main_scene_chapter2.gd
+res://Scene/Case/case_2.tscn
+res://Scene/Case/case_2.gd

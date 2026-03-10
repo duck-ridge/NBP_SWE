@@ -1,6 +1,6 @@
-RichTextLabel
 Sprite2D
 Node2D
+RichTextLabel
 CollisionShape2D
 Area2D
 Label
@@ -12,4 +12,3 @@ Button
 CanvasLayer
 TextureButton
 Panel
-TextureRect
