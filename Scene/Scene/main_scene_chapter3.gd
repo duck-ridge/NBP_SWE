@@ -60,8 +60,7 @@ func _ready():
 	await timer.timeout
 	
 	timer.queue_free()
-	desk_down(true)
-	$Judge/SkipBtn.show()
+
 	
 func intro_two_diplomat():
 	var tween = create_tween()
@@ -486,9 +485,8 @@ func dialog_system():
 			set_casefile2()
 			return
 		if allow_SOLVEIT == true:
-			
 			show_SHOLVEIT()
-			get_tree().change_scene_to_file("res://Scene/Scene/main_scene_chapter3.tscn")
+			#Global.emit_signal("show_case2_SOLVE_IT")
 			
 		return
 		
@@ -701,8 +699,7 @@ func news_map_over():
 			desk_raise()
 		6:
 			desk_raise()
-	#desk_raise()
-	#desk_half_raise()
+
 	
 	match current_news_code:
 		2:
@@ -715,6 +712,5 @@ func news_map_over():
 			set_newsfile6()
 
 func show_SHOLVEIT():
-	
 	var tween = create_tween()
 	tween.tween_property($SolveIt, "position", Vector2(0, 0), 1).from_current()

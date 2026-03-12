@@ -19,6 +19,9 @@ func check_news_order():
 	if is_PL1_correct == true and is_PL2_correct == true and is_PL3_correct == true:
 		$ContinueButton.disabled = false
 	
-	
 func _on_texture_button_pressed():
 	get_tree().reload_current_scene()
+	
+
+func _on_continue_button_pressed():
+	get_tree().change_scene_to_file("res://Scene/Scene/end_scene.tscn")

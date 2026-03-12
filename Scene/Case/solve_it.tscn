@@ -106,6 +106,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_62w3d")
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="pressed" from="ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="input_event" from="Proves/Prove1/Area2D" to="Proves/Prove1" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Proves/Prove2_1/Area2D" to="Proves/Prove2_1" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="Proves/Prove2_2/Area2D" to="Proves/Prove2_2" method="_on_area_2d_input_event"]
