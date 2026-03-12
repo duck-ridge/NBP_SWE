@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmauxy8pg62ay"]
+
+[ext_resource type="Script" path="res://Scene/Case/place_holder.gd" id="1_mb6fq"]
+[ext_resource type="Texture2D" uid="uid://cx6qhfuyx217l" path="res://Scene/Case/case2_widget/placeholder.png" id="1_nrh3l"]
+[ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="2_7jkm7"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="3_yvld0"]
+
+[node name="PlaceHolder1" type="Node2D"]
+script = ExtResource("1_mb6fq")
+
+[node name="empty" type="Sprite2D" parent="."]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("1_nrh3l")
+
+[node name="addit" type="Sprite2D" parent="empty"]
+position = Vector2(1.19209e-07, 2.38419e-07)
+texture = ExtResource("2_7jkm7")
+
+[node name="Note" type="Label" parent="."]
+custom_minimum_size = Vector2(260, 2.08165e-12)
+offset_left = -133.0
+offset_top = 146.0
+offset_right = 127.0
+offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("3_yvld0")
+theme_override_font_sizes/font_size = 22
+text = "test
+"
+autowrap_mode = 3

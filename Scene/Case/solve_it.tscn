@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://cut27nf6hi3ey"]
+
+[ext_resource type="PackedScene" uid="uid://cmauxy8pg62ay" path="res://Scene/Case/place_holder.tscn" id="1_6qar4"]
+[ext_resource type="Script" path="res://Scene/Case/solve_it.gd" id="1_qxm4r"]
+[ext_resource type="Script" path="res://Scene/Case/case2_widget/Proves/Prove1.gd" id="3_asrew"]
+[ext_resource type="Texture2D" uid="uid://rc3umjyey2jm" path="res://Scene/Case/case2_widget/Proves/Prove1.png" id="4_88byv"]
+[ext_resource type="Script" path="res://Scene/Case/case2_widget/Proves/Prove2_1.gd" id="5_doyb6"]
+[ext_resource type="Texture2D" uid="uid://ddw301xehqwpt" path="res://Scene/Case/case2_widget/Proves/Prove2_1.png" id="6_xu24e"]
+[ext_resource type="Script" path="res://Scene/Case/Prove2_2.gd" id="7_0ukeg"]
+[ext_resource type="Texture2D" uid="uid://cp3f1btuinlyy" path="res://Scene/Case/case2_widget/Proves/Prove2_2.png" id="7_80l01"]
+[ext_resource type="Texture2D" uid="uid://ddaxxoxbxuu2f" path="res://Scene/Case/case2_widget/Proves/Prove3.png" id="8_w4qqj"]
+[ext_resource type="Script" path="res://Scene/Case/Prove3.gd" id="9_g7bvu"]
+[ext_resource type="Texture2D" uid="uid://bouyut8xdyji6" path="res://Scene/Case/case2_widget/restart.png" id="11_wxhgw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_62w3d"]
+size = Vector2(296, 375)
+
+[node name="SolveIt" type="Node2D"]
+script = ExtResource("1_qxm4r")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = 468.0
+offset_top = 423.0
+offset_right = 630.0
+offset_bottom = 585.0
+texture_normal = ExtResource("11_wxhgw")
+
+[node name="ContinueButton" type="Button" parent="."]
+offset_left = 497.0
+offset_top = 551.0
+offset_right = 576.0
+offset_bottom = 582.0
+disabled = true
+text = "Continue"
+
+[node name="PlaceHolder1" parent="." instance=ExtResource("1_6qar4")]
+position = Vector2(175, 168)
+
+[node name="PlaceHolder2" parent="." instance=ExtResource("1_6qar4")]
+position = Vector2(517, 152)
+metadata/_edit_lock_ = true
+
+[node name="PlaceHolder3" parent="." instance=ExtResource("1_6qar4")]
+position = Vector2(871, 165)
+
+[node name="Proves" type="Node2D" parent="."]
+
+[node name="Prove1" type="Node2D" parent="Proves"]
+position = Vector2(148, 562)
+script = ExtResource("3_asrew")
+ini_pos = Vector2(148, 562)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Proves/Prove1"]
+texture = ExtResource("4_88byv")
+
+[node name="Area2D" type="Area2D" parent="Proves/Prove1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Proves/Prove1/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_62w3d")
+
+[node name="Prove2_1" type="Node2D" parent="Proves"]
+position = Vector2(442, 562)
+script = ExtResource("5_doyb6")
+ini_pos = Vector2(442, 562)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Proves/Prove2_1"]
+texture = ExtResource("6_xu24e")
+
+[node name="Area2D" type="Area2D" parent="Proves/Prove2_1"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Proves/Prove2_1/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_62w3d")
+
+[node name="Prove2_2" type="Node2D" parent="Proves"]
+position = Vector2(738, 562)
+script = ExtResource("7_0ukeg")
+ini_pos = Vector2(738, 562)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Proves/Prove2_2"]
+texture = ExtResource("7_80l01")
+
+[node name="Area2D" type="Area2D" parent="Proves/Prove2_2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Proves/Prove2_2/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_62w3d")
+
+[node name="Prove3" type="Node2D" parent="Proves"]
+position = Vector2(1032, 562)
+script = ExtResource("9_g7bvu")
+ini_pos = Vector2(1032, 562)
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Proves/Prove3"]
+texture = ExtResource("8_w4qqj")
+
+[node name="Area2D" type="Area2D" parent="Proves/Prove3"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Proves/Prove3/Area2D"]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_62w3d")
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
+[connection signal="input_event" from="Proves/Prove1/Area2D" to="Proves/Prove1" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Proves/Prove2_1/Area2D" to="Proves/Prove2_1" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Proves/Prove2_2/Area2D" to="Proves/Prove2_2" method="_on_area_2d_input_event"]
+[connection signal="input_event" from="Proves/Prove3/Area2D" to="Proves/Prove3" method="_on_area_2d_input_event"]
