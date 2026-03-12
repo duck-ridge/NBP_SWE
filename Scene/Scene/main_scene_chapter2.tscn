@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c4mhgc1nhyhar"]
+[gd_scene load_steps=58 format=3 uid="uid://c4mhgc1nhyhar"]
 
 [ext_resource type="Script" path="res://Scene/Scene/main_scene_chapter2.gd" id="1_a1khs"]
 [ext_resource type="Texture2D" uid="uid://by30c5xeoeoox" path="res://Asset/OfficeStuff/wall.png" id="2_wvs4r"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b0wegkv3ysmr3" path="res://Asset/OfficeStuff/Desk_shadow.png" id="15_8snr6"]
 [ext_resource type="Texture2D" uid="uid://cd80vperj25r1" path="res://Asset/Tutorial/select_tutorial.png" id="16_6el3a"]
 [ext_resource type="AudioStream" uid="uid://c4f38rupra4pi" path="res://Asset/Sound/elevator_doorOpen.mp3" id="17_644gs"]
+[ext_resource type="PackedScene" uid="uid://cut27nf6hi3ey" path="res://Scene/Case/solve_it.tscn" id="18_sfe43"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jxab4"]
 atlas = ExtResource("9_j2lfq")
@@ -457,6 +458,9 @@ vertical_alignment = 1
 
 [node name="AudioShutter" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_644gs")
+
+[node name="SolveIt" parent="." instance=ExtResource("18_sfe43")]
+position = Vector2(2.08165e-12, 926)
 
 [connection signal="timeout" from="Judge/ClickTimer" to="." method="_on_click_timer_timeout"]
 [connection signal="pressed" from="Judge/SkipBtn" to="." method="_on_skip_btn_pressed"]

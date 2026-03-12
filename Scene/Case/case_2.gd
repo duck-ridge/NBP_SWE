@@ -36,7 +36,6 @@ func debris_finished_status():
 
 
 func _on__pressed():
-
 	get_node("..").add_dialog_after_grok()
 	$ReliableList.hide()
 	get_node("..").dialog_system()

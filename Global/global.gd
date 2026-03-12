@@ -51,6 +51,7 @@ signal show_case1_puzzle_bg
 signal case2_grok_show
 signal case2_rating_show
 
+signal solve_it_place_prove
 
 #选中一个城市
 signal selected_city_signal(city_node)

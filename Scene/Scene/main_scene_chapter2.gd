@@ -475,7 +475,8 @@ func dialog_system():
 			set_casefile2()
 			return
 		else:
-			Global.emit_signal("show_case1_puzzle_bg")
+			#Global.emit_signal("show_case2_SOLVE_IT")
+			pass
 		return
 		
 	dialog_say_something(dialog_number % 2, dialog_all_pool[dialog_number])
@@ -699,3 +700,6 @@ func news_map_over():
 		6:
 			set_newsfile6()
 
+func show_solve_it():
+	var tween = create_tween()
+	tween.tween_property($SolveIt, "position", Vector2(0, 0), 1).from_current()

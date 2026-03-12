@@ -17,7 +17,7 @@ func _physics_process(delta):
 	if is_grabbed:
 		global_position = get_global_mouse_position()
 		
-		
+
 func release_grab():
 	is_grabbed = false
 	var Icon2 = get_node("../PuzzleBG/AddIcon2")

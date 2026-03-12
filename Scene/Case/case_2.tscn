@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scene/Case/case_2.gd" id="1_6fjdn"]
 [ext_resource type="Texture2D" uid="uid://dl0snkwkgsqf7" path="res://Scene/Case/case2_widget/case2pic.png" id="2_5j478"]
 [ext_resource type="Texture2D" uid="uid://c18e5gmntfun5" path="res://Scene/Case/case2_widget/detroit_news.png" id="2_lmvn2"]
-[ext_resource type="Texture2D" uid="uid://of684kyce5tu" path="res://Scene/Case/case2_widget/Grok.png" id="4_dqqs1"]
-[ext_resource type="Texture2D" uid="uid://dkxwrndspf2kj" path="res://Scene/Case/case2_widget/Context.png" id="5_u0mrj"]
+[ext_resource type="Texture2D" uid="uid://c2lmhv6a2pnxo" path="res://Scene/Case/case2_widget/GrokCard.png" id="4_ety5e"]
+[ext_resource type="Texture2D" uid="uid://cy7m2vm6y1v6f" path="res://Scene/Case/case2_widget/ContextCard.png" id="5_fnoy6"]
 
 [node name="Case2" type="Node2D"]
 script = ExtResource("1_6fjdn")
@@ -31,13 +31,13 @@ texture = ExtResource("2_5j478")
 position = Vector2(-349, -7)
 rotation = -0.260054
 scale = Vector2(0.479757, 0.479757)
-texture = ExtResource("4_dqqs1")
+texture = ExtResource("4_ety5e")
 
 [node name="Context" type="Sprite2D" parent="RiotPic"]
 position = Vector2(374, 17)
 rotation = 0.217105
 scale = Vector2(0.479757, 0.479757)
-texture = ExtResource("5_u0mrj")
+texture = ExtResource("5_fnoy6")
 
 [node name="ReliableList" type="Control" parent="."]
 visible = false
@@ -45,6 +45,7 @@ layout_mode = 3
 anchors_preset = 0
 
 [node name="1" type="Button" parent="ReliableList"]
+layout_mode = 0
 offset_left = -120.0
 offset_top = -1.0
 offset_right = -80.0
@@ -52,6 +53,7 @@ offset_bottom = 39.0
 text = "1"
 
 [node name="2" type="Button" parent="ReliableList"]
+layout_mode = 0
 offset_left = -70.0
 offset_right = -30.0
 offset_bottom = 40.0
@@ -59,6 +61,7 @@ text = "2
 "
 
 [node name="3" type="Button" parent="ReliableList"]
+layout_mode = 0
 offset_left = -21.0
 offset_right = 19.0
 offset_bottom = 40.0
@@ -66,6 +69,7 @@ text = "3
 "
 
 [node name="4" type="Button" parent="ReliableList"]
+layout_mode = 0
 offset_left = 37.0
 offset_right = 77.0
 offset_bottom = 40.0
@@ -73,6 +77,7 @@ text = "4
 "
 
 [node name="5" type="Button" parent="ReliableList"]
+layout_mode = 0
 offset_left = 90.0
 offset_right = 130.0
 offset_bottom = 40.0
