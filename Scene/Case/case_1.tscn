@@ -13,8 +13,10 @@
 script = ExtResource("1_ody3u")
 
 [node name="GunPic" parent="." instance=ExtResource("2_knldi")]
+position = Vector2(281, -15)
 
 [node name="WaterPic" parent="." instance=ExtResource("3_ejgx7")]
+position = Vector2(-360, 39)
 
 [node name="PuzzleBG" type="Node2D" parent="."]
 
@@ -38,15 +40,14 @@ position = Vector2(44, -68)
 texture = ExtResource("7_mj1c7")
 
 [node name="Original" type="Sprite2D" parent="PuzzleBG"]
-visible = false
 position = Vector2(-2, 1.25)
 scale = Vector2(1.63918, 1.66216)
 texture = ExtResource("8_v0sxt")
 
 [node name="Illustration" type="RichTextLabel" parent="."]
-visible = false
 offset_left = 200.0
 offset_top = -153.0
 offset_right = 430.0
 offset_bottom = 125.0
+mouse_filter = 1
 text = "Fotot togs i början av Iraqkriget år 2003. Amerikanska soldater måste följa regler när de hanterar krigsfångar: vara beväpnade och samtidigt ge human behandling enligt Genèvekonventionerna. Bilden togs av Itsuo Inouye, men när den sprids utan sammanhang kan betydelsen lätt misstolkas."

@@ -40,9 +40,11 @@ scale = Vector2(0.479757, 0.479757)
 texture = ExtResource("5_fnoy6")
 
 [node name="ReliableList" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
+offset_top = 131.0
+offset_bottom = 131.0
+metadata/_edit_group_ = true
 
 [node name="1" type="Button" parent="ReliableList"]
 layout_mode = 0

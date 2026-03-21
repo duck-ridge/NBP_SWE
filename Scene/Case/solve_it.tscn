@@ -1,15 +1,18 @@
-[gd_scene load_steps=13 format=3 uid="uid://cut27nf6hi3ey"]
+[gd_scene load_steps=16 format=3 uid="uid://cut27nf6hi3ey"]
 
-[ext_resource type="PackedScene" uid="uid://cmauxy8pg62ay" path="res://Scene/Case/place_holder.tscn" id="1_6qar4"]
 [ext_resource type="Script" path="res://Scene/Case/solve_it.gd" id="1_qxm4r"]
 [ext_resource type="Script" path="res://Scene/Case/case2_widget/Proves/Prove1.gd" id="3_asrew"]
-[ext_resource type="Texture2D" uid="uid://rc3umjyey2jm" path="res://Scene/Case/case2_widget/Proves/Prove1.png" id="4_88byv"]
+[ext_resource type="Script" path="res://Scene/Case/place_holder.gd" id="4_i21f6"]
 [ext_resource type="Script" path="res://Scene/Case/case2_widget/Proves/Prove2_1.gd" id="5_doyb6"]
-[ext_resource type="Texture2D" uid="uid://ddw301xehqwpt" path="res://Scene/Case/case2_widget/Proves/Prove2_1.png" id="6_xu24e"]
+[ext_resource type="Texture2D" uid="uid://bu7ofkmolkg2b" path="res://Scene/Case/case2_widget/Proves/ProveSharpen/Prove1.png" id="5_g7ku5"]
+[ext_resource type="Texture2D" uid="uid://cx6qhfuyx217l" path="res://Scene/Case/case2_widget/placeholder.png" id="5_hgf4r"]
+[ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="6_ntg07"]
 [ext_resource type="Script" path="res://Scene/Case/Prove2_2.gd" id="7_0ukeg"]
-[ext_resource type="Texture2D" uid="uid://cp3f1btuinlyy" path="res://Scene/Case/case2_widget/Proves/Prove2_2.png" id="7_80l01"]
-[ext_resource type="Texture2D" uid="uid://ddaxxoxbxuu2f" path="res://Scene/Case/case2_widget/Proves/Prove3.png" id="8_w4qqj"]
+[ext_resource type="Texture2D" uid="uid://csa7jl56e48l6" path="res://Scene/Case/case2_widget/Proves/ProveSharpen/Prove2_1.png" id="7_35r8i"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="7_ei1f7"]
 [ext_resource type="Script" path="res://Scene/Case/Prove3.gd" id="9_g7bvu"]
+[ext_resource type="Texture2D" uid="uid://bhosf2fkcjtr3" path="res://Scene/Case/case2_widget/Proves/ProveSharpen/Prove2_2.png" id="9_jkoxr"]
+[ext_resource type="Texture2D" uid="uid://dsqpaxy2cyhxj" path="res://Scene/Case/case2_widget/Proves/ProveSharpen/Prove3.png" id="11_eag7y"]
 [ext_resource type="Texture2D" uid="uid://bouyut8xdyji6" path="res://Scene/Case/case2_widget/restart.png" id="11_wxhgw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62w3d"]
@@ -19,40 +22,119 @@ size = Vector2(296, 375)
 script = ExtResource("1_qxm4r")
 
 [node name="TextureButton" type="TextureButton" parent="."]
-offset_left = 468.0
-offset_top = 423.0
-offset_right = 630.0
-offset_bottom = 585.0
+offset_left = 1010.0
+offset_top = 12.0
+offset_right = 1172.0
+offset_bottom = 174.0
 texture_normal = ExtResource("11_wxhgw")
 
+[node name="Label" type="Label" parent="TextureButton"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.093
+anchor_right = 0.77
+anchor_bottom = 0.7
+offset_left = 37.0
+offset_top = 147.066
+offset_right = -30.74
+offset_bottom = 41.6
+text = "Restart"
+
 [node name="ContinueButton" type="Button" parent="."]
-offset_left = 497.0
-offset_top = 551.0
-offset_right = 576.0
-offset_bottom = 582.0
+offset_left = 1038.0
+offset_top = 172.0
+offset_right = 1117.0
+offset_bottom = 203.0
 disabled = true
-text = "Continue"
+text = "Fortsätta"
 
-[node name="PlaceHolder1" parent="." instance=ExtResource("1_6qar4")]
+[node name="PlaceHolder1" type="Node2D" parent="."]
 position = Vector2(175, 168)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_i21f6")
 
-[node name="PlaceHolder2" parent="." instance=ExtResource("1_6qar4")]
+[node name="empty" type="Sprite2D" parent="PlaceHolder1"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hgf4r")
+
+[node name="addit" type="Sprite2D" parent="PlaceHolder1/empty"]
+position = Vector2(1.19209e-07, 2.38419e-07)
+texture = ExtResource("6_ntg07")
+
+[node name="Note" type="Label" parent="PlaceHolder1"]
+custom_minimum_size = Vector2(260, 2.08165e-12)
+offset_left = -133.0
+offset_top = 146.0
+offset_right = 127.0
+offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("7_ei1f7")
+theme_override_font_sizes/font_size = 22
+text = "Vad är bakgrunden
+"
+autowrap_mode = 3
+
+[node name="PlaceHolder2" type="Node2D" parent="."]
 position = Vector2(517, 152)
-metadata/_edit_lock_ = true
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_i21f6")
 
-[node name="PlaceHolder3" parent="." instance=ExtResource("1_6qar4")]
+[node name="empty" type="Sprite2D" parent="PlaceHolder2"]
+position = Vector2(-8, -45.3333)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hgf4r")
+
+[node name="addit" type="Sprite2D" parent="PlaceHolder2/empty"]
+position = Vector2(1.19209e-07, 2.38419e-07)
+texture = ExtResource("6_ntg07")
+
+[node name="Note" type="Label" parent="PlaceHolder2"]
+custom_minimum_size = Vector2(260, 2.08165e-12)
+offset_left = -128.0
+offset_top = 118.667
+offset_right = 132.0
+offset_bottom = 265.667
+theme_override_fonts/font = ExtResource("7_ei1f7")
+theme_override_font_sizes/font_size = 22
+text = "Händelseförlopp
+"
+autowrap_mode = 3
+
+[node name="PlaceHolder3" type="Node2D" parent="."]
 position = Vector2(871, 165)
+scale = Vector2(0.75, 0.75)
+script = ExtResource("4_i21f6")
+
+[node name="empty" type="Sprite2D" parent="PlaceHolder3"]
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("5_hgf4r")
+
+[node name="addit" type="Sprite2D" parent="PlaceHolder3/empty"]
+position = Vector2(1.19209e-07, 2.38419e-07)
+texture = ExtResource("6_ntg07")
+
+[node name="Note" type="Label" parent="PlaceHolder3"]
+custom_minimum_size = Vector2(260, 2.08165e-12)
+offset_left = -133.0
+offset_top = 146.0
+offset_right = 127.0
+offset_bottom = 293.0
+theme_override_fonts/font = ExtResource("7_ei1f7")
+theme_override_font_sizes/font_size = 22
+text = "Och sen då?
+"
+autowrap_mode = 3
 
 [node name="Proves" type="Node2D" parent="."]
 
 [node name="Prove1" type="Node2D" parent="Proves"]
-position = Vector2(148, 562)
+position = Vector2(136, 477)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("3_asrew")
 ini_pos = Vector2(148, 562)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Proves/Prove1"]
-texture = ExtResource("4_88byv")
+texture = ExtResource("5_g7ku5")
 
 [node name="Area2D" type="Area2D" parent="Proves/Prove1"]
 
@@ -61,13 +143,14 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_62w3d")
 
 [node name="Prove2_1" type="Node2D" parent="Proves"]
-position = Vector2(442, 562)
+position = Vector2(363, 526)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("5_doyb6")
 ini_pos = Vector2(442, 562)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Proves/Prove2_1"]
-texture = ExtResource("6_xu24e")
+texture = ExtResource("7_35r8i")
 
 [node name="Area2D" type="Area2D" parent="Proves/Prove2_1"]
 
@@ -76,13 +159,14 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_62w3d")
 
 [node name="Prove2_2" type="Node2D" parent="Proves"]
-position = Vector2(738, 562)
+position = Vector2(595, 494)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("7_0ukeg")
 ini_pos = Vector2(738, 562)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Proves/Prove2_2"]
-texture = ExtResource("7_80l01")
+texture = ExtResource("9_jkoxr")
 
 [node name="Area2D" type="Area2D" parent="Proves/Prove2_2"]
 
@@ -91,13 +175,14 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_62w3d")
 
 [node name="Prove3" type="Node2D" parent="Proves"]
-position = Vector2(1032, 562)
+position = Vector2(825, 527)
+scale = Vector2(0.8, 0.8)
 script = ExtResource("9_g7bvu")
 ini_pos = Vector2(1032, 562)
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Proves/Prove3"]
-texture = ExtResource("8_w4qqj")
+texture = ExtResource("11_eag7y")
 
 [node name="Area2D" type="Area2D" parent="Proves/Prove3"]
 

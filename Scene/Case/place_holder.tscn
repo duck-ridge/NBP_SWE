@@ -24,6 +24,6 @@ offset_right = 127.0
 offset_bottom = 293.0
 theme_override_fonts/font = ExtResource("3_yvld0")
 theme_override_font_sizes/font_size = 22
-text = "test
+text = "Vad är bakgrunden
 "
 autowrap_mode = 3

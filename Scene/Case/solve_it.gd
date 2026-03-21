@@ -17,6 +17,9 @@ func prove_placed():
 func check_news_order():
 	print(is_PL1_correct)
 	if is_PL1_correct == true and is_PL2_correct == true and is_PL3_correct == true:
+		var tween = create_tween()
+		tween.tween_property($ContinueButton, "scale", Vector2.ONE * 1.05, 0.1)
+		tween.tween_property($ContinueButton, "scale", Vector2.ONE, 0.1)
 		$ContinueButton.disabled = false
 	
 func _on_texture_button_pressed():

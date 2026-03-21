@@ -6,7 +6,6 @@ extends Node2D
 @onready var newsfile5 = preload("res://Scene/Photo/interview_news5.tscn")
 @onready var newsfile6 = preload("res://Scene/Photo/photo_temp_news6.tscn")
 
-
 @onready var newspaper1_pro = preload("res://Newspapers/newspaper_news1_pro.tscn")
 @onready var newspaper1_con = preload("res://Newspapers/newspaper_news1_con.tscn")
 @onready var newspaper3_pro = preload("res://Newspapers/newspaper_news3_pro.tscn")

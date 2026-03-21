@@ -35,5 +35,7 @@ func _on_area_2d_input_event(viewport, event, shape_idx):
 				release_grab()
 
 func paper_dissolved():
-	$newspaper.hide()
+	var tween = create_tween()
+	tween.tween_property($newspaper, "scale", Vector2(0, 0), 0.25)
+	tween.tween_property($newspaper, "modulate", Color(1.0, 1.0, 1.0, 0), 0.25)
 	pass
