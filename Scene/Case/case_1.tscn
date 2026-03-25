@@ -1,13 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvmyba1gte836"]
+[gd_scene load_steps=13 format=3 uid="uid://bvmyba1gte836"]
 
 [ext_resource type="Script" path="res://Scene/Case/case_1.gd" id="1_ody3u"]
 [ext_resource type="PackedScene" uid="uid://mcnpecvnwtnv" path="res://Scene/Case/case1_widget/gun_pic.tscn" id="2_knldi"]
 [ext_resource type="PackedScene" uid="uid://dml4ehos848gx" path="res://Scene/Case/case1_widget/water_pic.tscn" id="3_ejgx7"]
 [ext_resource type="Texture2D" uid="uid://c730m0ug5ag1n" path="res://Scene/Case/case1_widget/case1bg.png" id="4_pctl3"]
+[ext_resource type="Shader" path="res://Shader/BW.gdshader" id="4_vtsxs"]
 [ext_resource type="Texture2D" uid="uid://o2p56qa0sxsh" path="res://Scene/Case/case1_widget/debris1.png" id="5_h4qtq"]
 [ext_resource type="Texture2D" uid="uid://cc1o43lffqg2l" path="res://Scene/Case/case1_widget/debris2.png" id="6_3bjbw"]
 [ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="7_mj1c7"]
 [ext_resource type="Texture2D" uid="uid://ba5ivvwxg7cym" path="res://Asset/PhotoArchive/PhotoTempNews1/photo_1_origin.jpeg" id="8_v0sxt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_km26e"]
+shader = ExtResource("4_vtsxs")
+shader_parameter/amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rf1lq"]
+shader = ExtResource("4_vtsxs")
+shader_parameter/amount = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rxf80"]
+shader = ExtResource("4_vtsxs")
+shader_parameter/amount = 1.0
 
 [node name="Case1" type="Node2D"]
 script = ExtResource("1_ody3u")
@@ -19,16 +32,20 @@ position = Vector2(281, -15)
 position = Vector2(-360, 39)
 
 [node name="PuzzleBG" type="Node2D" parent="."]
+z_index = -1
 
 [node name="BG" type="Sprite2D" parent="PuzzleBG"]
+material = SubResource("ShaderMaterial_km26e")
 texture = ExtResource("4_pctl3")
 
 [node name="Debris1" type="Sprite2D" parent="PuzzleBG"]
 visible = false
+material = SubResource("ShaderMaterial_rf1lq")
 texture = ExtResource("5_h4qtq")
 
 [node name="Debris2" type="Sprite2D" parent="PuzzleBG"]
 visible = false
+material = SubResource("ShaderMaterial_rxf80")
 texture = ExtResource("6_3bjbw")
 
 [node name="AddIcon1" type="Sprite2D" parent="PuzzleBG"]

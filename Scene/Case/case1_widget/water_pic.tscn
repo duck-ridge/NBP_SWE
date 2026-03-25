@@ -1,8 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dml4ehos848gx"]
+[gd_scene load_steps=7 format=3 uid="uid://dml4ehos848gx"]
 
 [ext_resource type="Script" path="res://Scene/Case/case1_widget/water_pic.gd" id="1_qkn8u"]
 [ext_resource type="Texture2D" uid="uid://dmrh82s1fhq7t" path="res://Scene/Case/case1_widget/case1_waterpic_paper.png" id="2_d8gm8"]
 [ext_resource type="Texture2D" uid="uid://dhbv5wrndm3sv" path="res://Asset/PhotoArchive/PhotoTempNews1/photo_1_pro.png" id="3_gfjpv"]
+[ext_resource type="Shader" path="res://Shader/BW.gdshader" id="3_mro3c"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_umeih"]
+shader = ExtResource("3_mro3c")
+shader_parameter/amount = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xs441"]
 size = Vector2(158, 219)
@@ -16,6 +21,7 @@ scale = Vector2(1.13232, 1.13232)
 texture = ExtResource("2_d8gm8")
 
 [node name="pic" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_umeih")
 position = Vector2(-0.0010376, -0.126068)
 texture = ExtResource("3_gfjpv")
 

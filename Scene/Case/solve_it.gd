@@ -25,6 +25,5 @@ func check_news_order():
 func _on_texture_button_pressed():
 	get_tree().reload_current_scene()
 	
-
 func _on_continue_button_pressed():
-	get_tree().change_scene_to_file("res://Scene/Scene/end_scene.tscn")
+	get_tree().change_scene_to_file("res://Scene/Scene/main_scene_chapter4.tscn")

@@ -1,8 +1,8 @@
 extends Node2D
 
-var prove_pic1 = preload("res://Scene/Case/case2_widget/Proves/Prove1.png")
-var prove_pic2_1 = preload("res://Scene/Case/case2_widget/Proves/Prove2_1.png")
-var prove_pic2_2 = preload("res://Scene/Case/case2_widget/Proves/Prove2_2.png")
+var prove_pic1 = preload("res://Scene/Case/case2_widget/Proves/PROVESWE/Prove1.png")
+var prove_pic2_1 = preload("res://Scene/Case/case2_widget/Proves/PROVESWE/Prove2_1.png")
+var prove_pic2_2 = preload("res://Scene/Case/case2_widget/Proves/PROVESWE/Prove2_2.png")
 var prove_pic3 = preload("res://Scene/Case/case2_widget/Proves/Prove3.png")
 # Called when the node enters the scene tree for the first time.
 func _ready():

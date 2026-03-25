@@ -460,7 +460,7 @@ vertical_alignment = 1
 stream = ExtResource("17_644gs")
 
 [node name="SolveIt" parent="." instance=ExtResource("18_sfe43")]
-position = Vector2(2.08165e-12, 926)
+position = Vector2(-1, 852)
 
 [connection signal="timeout" from="Judge/ClickTimer" to="." method="_on_click_timer_timeout"]
 [connection signal="pressed" from="Judge/SkipBtn" to="." method="_on_skip_btn_pressed"]

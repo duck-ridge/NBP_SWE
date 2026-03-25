@@ -715,6 +715,5 @@ func news_map_over():
 			set_newsfile6()
 
 func show_SHOLVEIT():
-	
 	var tween = create_tween()
 	tween.tween_property($SolveIt, "position", Vector2(0, 0), 1).from_current()

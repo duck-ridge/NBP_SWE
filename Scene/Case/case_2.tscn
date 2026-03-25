@@ -86,6 +86,22 @@ offset_bottom = 40.0
 text = "5
 "
 
+[node name="Label" type="Label" parent="ReliableList"]
+layout_mode = 0
+offset_left = -185.0
+offset_top = 8.0
+offset_right = -145.0
+offset_bottom = 31.0
+text = "Otroligt"
+
+[node name="Label2" type="Label" parent="ReliableList"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 8.0
+offset_right = 182.0
+offset_bottom = 31.0
+text = "Trovärdigt"
+
 [connection signal="pressed" from="ReliableList/1" to="." method="_on__pressed"]
 [connection signal="pressed" from="ReliableList/2" to="." method="_on__pressed"]
 [connection signal="pressed" from="ReliableList/3" to="." method="_on__pressed"]

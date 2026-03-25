@@ -22,7 +22,7 @@ func release_grab():
 	is_grabbed = false
 	var Icon2 = get_node("../PuzzleBG/AddIcon2")
 	var debris2 = get_node("../PuzzleBG/Debris2")
-	if position.distance_to(Icon2.position) < 10:
+	if position.distance_to(Icon2.position) < 20:
 		debris2.show()
 		get_node("..").debris_finished_status()
 		hide()

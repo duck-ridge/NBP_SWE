@@ -1,7 +1,7 @@
 extends Node2D
 
 var is_grabbed: bool = false
-@export var ini_pos = Vector2(148, 562)
+@export var ini_pos = Vector2(813, 487)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
