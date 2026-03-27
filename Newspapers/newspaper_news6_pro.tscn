@@ -19,6 +19,7 @@ shader_parameter/u_pixel_size = 90.0
 
 [node name="Newspaper" type="Node2D"]
 z_index = 3
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_jva2e")
 
 [node name="NewspaperEmpty" type="Sprite2D" parent="."]

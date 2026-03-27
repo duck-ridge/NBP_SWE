@@ -487,7 +487,6 @@ func dialog_system():
 		if allow_SOLVEIT == true:
 			show_SHOLVEIT()
 			#Global.emit_signal("show_case2_SOLVE_IT")
-			
 		return
 		
 	dialog_say_something(dialog_number % 2, dialog_all_pool[dialog_number])

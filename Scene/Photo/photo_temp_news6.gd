@@ -2,7 +2,7 @@
 extends Node2D
 
 var pic_moveable: bool = true
-
+var allow_interact: bool = false
 @onready var news_photo_envolop = $NewsPhotoEnvolop
 @onready var report_news = $NewsPhoto
 
@@ -17,7 +17,7 @@ var pic_moveable: bool = true
 
 @onready var selector = $Selector
 
-var all_photos_num = 2
+var all_photos_num = 3
 
 @export var news_pro_pos = Vector2(200,300)
 @export var news_con_pos = Vector2(800,300)
@@ -32,8 +32,8 @@ var pro_shader_material
 var con_shader_material
 func _ready():
 	#report_news.show()
-	
-	
+	Global.connect("unlock_photo_temp_6_allow_interact", unlock_allow_interact)
+	Global.connect("temp_news6_destory", self_destory)
 	pro_shader_material = $PhotoOutcome/PhotoPro/Sprite2D.get_material()
 	#pro_shader_material.set("shader_parameter/gray_strength", 0.5)
 	con_shader_material = $PhotoOutcome/PhotoCon/Sprite2D.get_material()
@@ -51,12 +51,15 @@ func _ready():
 	indicatorA.show()
 	indicatorB.show()
 	indicatorC.show()
-
+func self_destory():
+	queue_free()
+	
+func unlock_allow_interact():
+	allow_interact = true
+	$HintLabel.show()
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
-		
-		
 		$NewsPhoto.self_modulate = Color(0.8, 0.8, 0.8, 0.9)
 		for node in $NewsPhoto.get_children():
 			var tween = create_tween()
@@ -96,7 +99,6 @@ func print_selected_node(nodeArray):
 		tween.parallel().tween_property(node, "modulate:a", 0, 0.2).from(1.0)
 	check_selected_node(nodeArray)
 
-
 #错误框选后的提示
 func wrong_selection_hint(code: int):
 	match code:
@@ -123,31 +125,55 @@ func wrong_selection_hint(code: int):
 			await tween.finished
 			many_hint_inst.queue_free()
 
+var is_neu_newsp_shown = false
+var is_con_newsp_shown = false
+var is_pro_newsp_shown = false
 
 func check_selected_node(nodeArray):
+	if allow_interact == false:
+		return
 	if nodeArray.size() == 1:
 		print("too few")
 		wrong_selection_hint(1)
-	elif nodeArray.size() == 3:
-		print("too many")
-		wrong_selection_hint(3)
 		
+	if nodeArray.has(indicatorA) and nodeArray.has(indicatorB) and nodeArray.has(indicatorC):
+		if is_neu_newsp_shown == true:
+			return
+		is_neu_newsp_shown = true
+		Global.emit_signal("filled_newspaper", 13)
+		all_photos_num -= 1
+		$HintLabel.text = str(all_photos_num) + " rapporteringsvinklar kvar"
+		print("X1")
+		check_rest_photo_exist()
+
 	if indicatorA and indicatorB in nodeArray and nodeArray.has(indicatorC) == false:
-		if con_pic.visible == true:
-				return
-		slide_select_pic("con")
+		if is_con_newsp_shown == true:
+			return
+		is_con_newsp_shown = true
+		Global.emit_signal("filled_newspaper", 11)
 		all_photos_num -= 1
+		$HintLabel.text = str(all_photos_num) + " rapporteringsvinklar kvar"
 		print("CON")
+		check_rest_photo_exist()
 		
-	elif indicatorB and indicatorC in nodeArray and nodeArray.has(indicatorA) == false:
-		if pro_pic.visible == true:
-				return
-		slide_select_pic("pro")
+	if indicatorB and indicatorC in nodeArray and nodeArray.has(indicatorA) == false:
+		if is_pro_newsp_shown == true:
+			return
+		is_pro_newsp_shown = true
+		Global.emit_signal("filled_newspaper", 12)
 		all_photos_num -= 1
+		$HintLabel.text = str(all_photos_num) + " rapporteringsvinklar kvar"
+		print("PRO")
+		check_rest_photo_exist()
+
 	
 func check_rest_photo_exist():
-	if pro_pic.visible && con_pic.visible == true:
-		$Selector.queue_free()
+	#if pro_pic.visible && con_pic.visible == true:
+		#$Selector.queue_free()
+	if all_photos_num > 0:
+		return
+	Global.emit_signal("all_newspaper_shown")
+	$HintLabel.text = "Välj ett perspektiv som är etiskt korrekt enligt nyhetsprinciper."
 		
 
 var is_con_revealed: bool = false
@@ -234,15 +260,12 @@ func set_a_wait_timer(the_time: float):
 	await timer.timeout
 	
 	
-
 func _on_photo_pro_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.is_pressed():
 			Global.emit_signal("filled_newspaper", 11)
 			
 			
-
-
 func _on_photo_con_area_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.is_pressed():
@@ -257,6 +280,6 @@ func slide_abit():
 	tween.set_parallel()
 	tween.set_trans(Tween.TRANS_ELASTIC).tween_property($NewsPhotoEnvolop, "scale", Vector2.ZERO, 0.8)
 	tween.tween_property($NewsPhoto, "rotation_degrees", 0, 0.8)
-	tween.tween_property($NewsPhoto, "position", Vector2(0, -90), 0.8 ).from(Vector2(0, -300))
+	tween.tween_property($NewsPhoto, "position", Vector2(0, -250), 0.8 ).from(Vector2(0, -300))
 	tween.set_trans(Tween.TRANS_ELASTIC).tween_property($Caption, "position", Vector2(-464, 140), 0.8 ).from(Vector2(-164, 214))
 	

@@ -55,6 +55,10 @@ signal case2_reader_context
 signal solve_it_place_prove
 signal show_case2_SOLVE_IT
 
+signal unlock_photo_temp_6_allow_interact
+#signal temp_6_show_drag_hint
+signal all_newspaper_shown
+signal temp_news6_destory
 #选中一个城市
 signal selected_city_signal(city_node)
 

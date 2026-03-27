@@ -500,14 +500,15 @@ func dialog_system():
 		var tween = create_tween()
 		tween.tween_property($Judge/Eagalnia/DialogBubble, "scale", Vector2.ZERO, 0.25)
 		tween.tween_property($Judge/Graznovia/DialogBubble, "scale", Vector2.ZERO, 0.25)
-		if is_casefile1_shown != true:
-			is_casefile1_shown = true
-			
-			desk_raise()
-			set_casefile1()
-			return
-		else:
-			Global.emit_signal("show_case1_puzzle_bg")
+		#if is_casefile1_shown != true:
+			#is_casefile1_shown = true
+			#
+			#desk_raise()
+			#set_casefile1()
+			#return
+		#else:
+			#Global.emit_signal("show_case1_puzzle_bg")
+		get_tree().change_scene_to_file("res://Scene/Scene/standby_screen.tscn")
 		return
 		
 	dialog_say_something(dialog_number % 2, dialog_all_pool[dialog_number])

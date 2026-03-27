@@ -1,0 +1,109 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0k73y8kmx78y"]
+
+[ext_resource type="Script" path="res://Newspapers/newspaper_news6_neu.gd" id="1_qvfqa"]
+[ext_resource type="Texture2D" uid="uid://dpws024inwyag" path="res://Asset/NewspaperResult/newspaper6_full.png" id="2_qshma"]
+[ext_resource type="Texture2D" uid="uid://bqcs8m32eej6v" path="res://Asset/OfficeStuff/NewspaperPicEmpty.png" id="3_03jwh"]
+[ext_resource type="Texture2D" uid="uid://dt0laqby06ilt" path="res://Asset/OfficeStuff/NewspaperPicAdd.png" id="4_4kdhw"]
+[ext_resource type="Shader" path="res://Shader/newspic_filter.gdshader" id="5_gla0j"]
+[ext_resource type="Texture2D" uid="uid://cgcj7kr8h1um1" path="res://Asset/PhotoArchive/PhotoTempNews6/photo_6_con.png" id="6_2uhuy"]
+[ext_resource type="FontFile" uid="uid://bnguafgid4i8t" path="res://Asset/Font/VonwaonBitmap-12px.ttf" id="7_cghd4"]
+[ext_resource type="FontFile" uid="uid://betxkxwohtljd" path="res://Asset/Font/Tinos-Regular.ttf" id="8_xkbdc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8bcm"]
+size = Vector2(342, 451)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nvpr4"]
+shader = ExtResource("5_gla0j")
+shader_parameter/gray_strength = 0.85
+shader_parameter/u_pixel_size = 90.0
+
+[node name="Newspaper" type="Node2D"]
+z_index = 3
+scale = Vector2(0.8, 0.8)
+script = ExtResource("1_qvfqa")
+
+[node name="NewspaperEmpty" type="Sprite2D" parent="."]
+texture = ExtResource("2_qshma")
+
+[node name="PicEmpty" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.871141, 0.871141, 0.871141, 1)
+position = Vector2(67, 26)
+texture = ExtResource("3_03jwh")
+
+[node name="PicAdd" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(67, 26)
+texture = ExtResource("4_4kdhw")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(67, 26)
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-67, -26.5)
+shape = SubResource("RectangleShape2D_q8bcm")
+
+[node name="TitleGroup" type="Node2D" parent="."]
+
+[node name="NewspaperPack" type="Node2D" parent="."]
+visible = false
+
+[node name="NewsPic" type="Sprite2D" parent="NewspaperPack"]
+material = SubResource("ShaderMaterial_nvpr4")
+position = Vector2(6, 39)
+scale = Vector2(0.646875, 0.646875)
+texture = ExtResource("6_2uhuy")
+
+[node name="NewsDescription" type="RichTextLabel" parent="NewspaperPack"]
+offset_left = -123.0
+offset_top = -38.0
+offset_right = -4.0
+offset_bottom = 119.0
+
+[node name="NewsTitle1" type="Label" parent="NewspaperPack"]
+offset_left = -118.0
+offset_top = -121.0
+offset_right = 116.0
+offset_bottom = -98.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cghd4")
+text = "VILLAIN! STOP HURT!
+Graznovia 这样对无辜的人吗"
+horizontal_alignment = 1
+
+[node name="NewsTitle2" type="Label" parent="NewspaperPack"]
+custom_minimum_size = Vector2(240, 2.08165e-12)
+offset_left = -120.0
+offset_top = -93.0
+offset_right = 121.0
+offset_bottom = -44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_xkbdc")
+text = "Use force to innocents?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="NewsTime" type="Label" parent="NewspaperPack"]
+offset_left = 62.0
+offset_top = -171.0
+offset_right = 102.0
+offset_bottom = -148.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_xkbdc")
+
+[node name="Content" type="Label" parent="NewspaperPack"]
+offset_left = -104.0
+offset_top = 114.0
+offset_right = 112.0
+offset_bottom = 174.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_cghd4")
+theme_override_font_sizes/font_size = 12
+text = "执法有温度，甩棍有力度，抬脚有准度，
+棍棍有态度，抬手有高度 
+Graznovia 士兵对和平的人民从不手软。"
+
+[connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

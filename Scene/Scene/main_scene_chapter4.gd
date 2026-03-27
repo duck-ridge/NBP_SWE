@@ -6,9 +6,7 @@ extends Node2D
 @onready var newsfile5 = preload("res://Scene/Photo/interview_news5.tscn")
 @onready var newsfile6 = preload("res://Scene/Photo/photo_temp_news6.tscn")
 
-
 @onready var newsfile_fight_case = preload("res://Scene/Photo/photo_temp_news6.tscn")
-
 
 @onready var newspaper1_pro = preload("res://Newspapers/newspaper_news1_pro.tscn")
 @onready var newspaper1_con = preload("res://Newspapers/newspaper_news1_con.tscn")
@@ -16,7 +14,7 @@ extends Node2D
 @onready var newspaper3_con = preload("res://Newspapers/newspaper_news3_con.tscn")
 @onready var newspaper6_pro = preload("res://Newspapers/newspaper_news6_pro.tscn")
 @onready var newspaper6_con = preload("res://Newspapers/newspaper_news6_con.tscn")
-
+@onready var newspaper6_neu = preload("res://Newspapers/newspaper_news6_neu.tscn")
 @onready var casefile1 = preload("res://Scene/Case/case_1.tscn")
 
 @onready var PoliticalTendency = $Judge/PoliticalTendency
@@ -30,8 +28,8 @@ var final_round: bool = false
 
 func _ready():
 	$Judge/SkipBtn.hide()
-	$SelectTutorial.hide()
-	$SelectTutorial/AnimatedSprite2D.hide()
+	$SelectTutorialX.hide()
+	#$SelectTutorial/AnimatedSprite2D.hide()
 	
 	Global.connect("filled_newspaper", popout_filled_newspaper)
 	Global.connect("pop_a_leader", pop_a_leader_sprite)
@@ -46,7 +44,7 @@ func _ready():
 	#地图选完后继续下一个
 	Global.connect("map_news_received", news_map_over)
 	
-	
+	Global.connect("all_newspaper_shown", unlock_newspapers_interact)
 	#结算
 	Global.connect("map_all_filled", map_over)
 	#Global.connect("end_settlement", final)
@@ -64,6 +62,13 @@ func _ready():
 	timer.queue_free()
 	desk_down(true)
 	$Judge/SkipBtn.show()
+
+func unlock_newspapers_interact():
+	for i in get_node("NewspaperGroup").get_children():
+		if i.get("allow_interact") != null:
+			i.allow_interact = true
+	
+	
 	
 func intro_two_diplomat():
 	var tween = create_tween()
@@ -185,11 +190,14 @@ func set_casefile1():
 	timer.queue_free()
 		
 	dialog_all_pool += [
-		"Ser du den här bilden? Den publicerades i tidning A med rubriken ”En brutal handling.”",
-		"Ja, verkligen. En soldat som redan har blivit tillfångatagen borde inte behandlas så.",
-		"Men i en annan tidning används samma bild i en annan artikel, med rubriken ”En human handling.”",
-		"Vad bra att fångar behandlas humant… vänta, är det samma person på båda bilderna?",
-		"Vi kan pussla ihop vad som egentligen hände."	
+						"Här är en bild från en konflikt på plats.",
+						"Det ser ut som att en vakt och en demonstrant har hamnat i konflikt.",
+						"Låt oss tänka som en nyhetsredaktör och se hur bilden kan presenteras.",
+						"Vad ska jag göra?",
+						"Dra med musen för att välja olika delar av bilden och skapa nyheter med olika vinklar.",
+						"Vilka tre?",
+						"Sympati för demonstranten, kritik mot demonstranten och en neutral rapportering.",
+						"Håll ned mellanslag för att markera viktiga delar i bilden."
 	]
 	dialog_system()
 	#current_news_code = 1
@@ -250,7 +258,6 @@ func set_newsfile2():
 	#摧毁新手教学
 	tween.tween_property($SelectTutorial, "modulate", Color(1.0, 1.0, 1.0, 0.0), 1.0).from(Color(1.0, 1.0, 1.0, 1.0))
 	await tween.finished
-	$SelectTutorial.hide()
 
 func set_newsfile3():
 	#current_news_code = 3
@@ -348,82 +355,58 @@ func set_news_property_with_timer(x: int):
 	
 	
 	
-	
+var allow_to_next_scene:bool = false
 func click_newspaper(code_string: String):
 	match code_string:
-		"news1_con":
-			destroy_newsfile(1)
-			map_gap()
-			
-			set_news_property_with_timer(-1)
-			
-		"news1_pro":
-			destroy_newsfile(1)
-			map_gap()
-			set_news_property_with_timer(1)
-		
-		#interview
-		"news2_con":
-			destroy_newsfile(2)
-			map_gap()
-			set_news_property_with_timer(-1)
-			#map_news_unreceived signal可以将改变是否能给地图变颜色
-			Global.emit_signal("map_news_unreceived")
-		"news2_pro":
-			destroy_newsfile(2)
-			map_gap()
-			set_news_property_with_timer(1)
-			print("news3_pro")
-			Global.emit_signal("map_news_unreceived")
-		
-		
-		"news3_con":
-			destroy_newsfile(3)
-			map_gap()
-			set_news_property_with_timer(-1)
-			#map_news_unreceived signal可以将改变是否能给地图变颜色
-			Global.emit_signal("map_news_unreceived")
-			
-		"news3_pro":
-			destroy_newsfile(3)
-			map_gap()
-			#set_news_property_with_timer(1)
-			print("news3_pro")
-			Global.emit_signal("map_news_unreceived")
-		
-		
-				#interview
-		"news5_con":
-			destroy_newsfile(5)
-			map_gap()
-			#set_news_property_with_timer(-1)
-			#map_news_unreceived signal可以将改变是否能给地图变颜色
-			Global.emit_signal("map_news_unreceived")
-		"news5_pro":
-			destroy_newsfile(5)
-			map_gap()
-			#set_news_property_with_timer(1)
-			print("news5_pro")
-			Global.emit_signal("map_news_unreceived")
-			
-		
 		"news6_con":
-			Global.emit_signal("map_news_unreceived")
-			
-			destroy_newsfile(6)
-			map_gap()
-			#set_news_property_with_timer(-1)
-			#pass
+			var tween = create_tween()
+			tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
+			for i in $NewspaperGroup.get_children():
+				tween.tween_property(i, "scale", Vector2.ZERO, 0.25)
+						
+			allow_to_next_scene = true
+			Global.emit_signal("temp_news6_destory")
+			desk_down(false)
+			dialog_all_pool += [
+						"Den här artikeln fokuserar på att vakten attackerar demonstranten.",
+						"Men den är inte helt neutral i hur nyheten presenteras.",
+						"Som nyhetsproducenter har vi ett ansvar.",
+						"Det handlar inte bara om att bevara mediernas anseende.",
+						"Det är viktigt att nyheterna förblir neutrala och att publiken får en tydligare bild av fakta."
+						]
 		"news6_pro":
-			Global.emit_signal("map_news_unreceived")
-
-			destroy_newsfile(6)
-			map_gap()
-			#set_news_property_with_timer(1)
-			#pass
+			var tween = create_tween()
+			tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
+			for i in $NewspaperGroup.get_children():
+				tween.tween_property(i, "scale", Vector2.ZERO, 0.25)
+						
+			allow_to_next_scene = true
+			Global.emit_signal("temp_news6_destory")
+			desk_down(false)
+			dialog_all_pool += [
+						"Den här artikeln fokuserar på att demonstranten attackerar vakten.",
+						"Men den är inte helt neutral i hur nyheten presenteras.",
+						"Som nyhetsproducenter har vi ett ansvar.",
+						"Det handlar inte bara om att bevara mediernas anseende.",
+						"Det är viktigt att nyheterna förblir neutrala och att publiken får en tydligare bild av fakta."
+						]
 			
+		"news6_neu":
+			var tween = create_tween()
+			tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BOUNCE)
+			for i in $NewspaperGroup.get_children():
+				tween.tween_property(i, "scale", Vector2.ZERO, 0.25)
+						
+			allow_to_next_scene = true
+			Global.emit_signal("temp_news6_destory")
+			desk_down(false)
+			dialog_all_pool += [
+						"Den här artikeln fokuserar på konflikten mellan vakten och demonstranten.",
+						"Duktigt gjort! Som nyhetsproducenter har vi ett ansvar.",
+						"Det handlar inte bara om att bevara mediernas anseende.",
+						"Det är viktigt att nyheterna förblir neutrala och att publiken får en tydligare bild av fakta."
+						]
 			
-		
 
 var news1_threat_dialog: bool = false
 var news2_threat_dialog: bool = false
@@ -473,17 +456,10 @@ var is_casefile1_shown: bool = false
 var dialog_number: int = 0
 
 var dialog_all_pool: Array = [
-							"Hur kändes det att vara en “bilddetektiv”?",
-							"Från ilska till tvivel och sedan förvåning – vilken vändning!",
-							"Ja, även ett foto visar inte alltid hela bilden av vad som hänt.",
-							"Och vi ska inte låta starka känslor styra oss – det är viktigt att kontrollera flera källor.",
-							"AI kan hjälpa oss att hitta fakta, men det kan inte tänka åt oss.",
-							"Att bedöma informationens trovärdighet är fortfarande vårt ansvar.",
-							"Det är just vad mediekompetens handlar om.",
-							"Tack för att du deltog i spelet!"
-							
-							
-							
+							"Varför förvrängs nyheter så lätt när de sprids?",
+							"Hur information presenteras kan påverka hur vi tolkar den.",
+							"Förutom det vi ser i bilden måste vi också tänka på vad som inte visas.",
+							"Precis, som bilden där en krigsfånge får vatten.",
 							]
 	
 func dialog_system():
@@ -510,24 +486,35 @@ func dialog_system():
 			desk_raise()
 			set_casefile1()
 			return
-		else:
-			Global.emit_signal("show_case1_puzzle_bg")
-		return
+		#else:
+			#Global.emit_signal("show_case1_puzzle_bg")
 		
+		return
+	
 	dialog_say_something(dialog_number % 2, dialog_all_pool[dialog_number])
 	check_dialog_event(dialog_number)
 	dialog_number += 1
+	if dialog_number > dialog_all_pool.size() - 1:
+		if allow_to_next_scene == true:
+			get_tree().change_scene_to_file("res://Scene/Scene/end_scene.tscn")
 
 
-var show_water_pic_page: int = 11
-var dissolve_case_pic_page: int = 12
+var unlock_photo_temp_6_allow_interact: int = 11
+var show_drag_hint: int = 8
 func check_dialog_event(dia_num: int):
+	print(dia_num)
 	match dia_num:
-		show_water_pic_page:
-			Global.emit_signal("case1_waterpic_paper_show")
-		dissolve_case_pic_page:
-			Global.emit_signal("case1_gunpic_paper_dissolve")
-			Global.emit_signal("case1_waterpic_paper_dissolve")
+		unlock_photo_temp_6_allow_interact:
+			Global.emit_signal("unlock_photo_temp_6_allow_interact")
+			$SelectTutorialX.hide()
+		show_drag_hint:
+			print("XXXX")
+			$SelectTutorialX.show()
+			#Global.emit_signal("temp_6_show_drag_hint")
+			
+		#dissolve_case_pic_page:
+			#Global.emit_signal("case1_gunpic_paper_dissolve")
+			#Global.emit_signal("case1_waterpic_paper_dissolve")
 
 			
 			
@@ -539,13 +526,13 @@ func _unhandled_input(event):
 		$Judge/ClickSound.play()
 		dialog_system()
 	if Input.is_action_pressed("ui_accept"):
-		if $SelectTutorial.visible != true or tutorial_over == true:
+		if $SelectTutorialX.visible != true or tutorial_over == true:
 			return
 		#$SelectTutorial/HintsLabel.text = "Good Job"
-		$SelectTutorial/HintsLabel.text = "Well done"
+		#$SelectTutorialX/HintsLabel.text = "Well done"
+		#
 		
-		
-		$SelectTutorial/AnimatedSprite2D.show()
+		$SelectTutorialX/AnimatedSprite2D.show()
 		
 		var timer = Timer.new()
 		timer.wait_time = 1.5
@@ -555,8 +542,6 @@ func _unhandled_input(event):
 		timer.queue_free()
 		#$SelectTutorial/HintsLabel.text = "Now, try to find two opposite\n
 											#perspective in this photo"
-		$SelectTutorial/HintsLabel.text = "Try to discover two completely \n
-											 opposing parts from this photo."
 
 		tutorial_over = true
 		
@@ -569,9 +554,9 @@ func _unhandled_input(event):
 		#$SelectTutorial/HintsLabel.hide()
 		
 		var tween = create_tween()
-		tween.tween_property($SelectTutorial/HintsLabel, "modulate", Color(1.0, 1.0, 1.0, 0.0), 2.0).from_current()
+		tween.tween_property($SelectTutorialX/HintsLabel, "modulate", Color(1.0, 1.0, 1.0, 0.0), 2.0).from_current()
 		await tween.finished
-		$SelectTutorial/HintsLabel.hide()
+		$SelectTutorialX/HintsLabel.hide()
 
 #Newspaper shown
 var newspaper1_pro_shown: bool = false
@@ -580,6 +565,7 @@ var newspaper3_pro_shown: bool = false
 var newspaper3_con_shown: bool = false
 var newspaper6_pro_shown: bool = false
 var newspaper6_con_shown: bool = false
+var newspaper6_neu_shown: bool = false
 	
 func popout_filled_newspaper(code: int):
 	var present_position: Vector2
@@ -624,14 +610,21 @@ func popout_filled_newspaper(code: int):
 			newspaper6_pro_shown = true
 			
 			newspaper = newspaper6_pro
-			present_position = Vector2(950, 450)
+			present_position = Vector2(950, 520)
+			
 		12:
 			if newspaper6_con_shown == true:
 				return
 			newspaper6_con_shown = true
 			
 			newspaper = newspaper6_con
-			present_position = Vector2(200, 450)
+			present_position = Vector2(200, 520)
+		13:
+			if newspaper6_neu_shown == true:
+				return
+			newspaper6_con_shown = true
+			newspaper = newspaper6_neu
+			present_position = Vector2(582, 520)
 	if newspaper == null:
 		return
 	var newspaper_inst = newspaper.instantiate()

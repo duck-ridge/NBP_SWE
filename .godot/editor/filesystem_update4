@@ -15,3 +15,16 @@ res://Scene/Case/solve_it.gd
 res://Scene/Scene/main_scene_chapter4.tscn
 res://Scene/Scene/main_scene_chapter4.gd
 res://Scene/Photo/photo_temp_news6.tscn
+res://Newspapers/newspaper_news6_neu.tscn
+res://Scene/Photo/photo_temp_news6.gd
+res://Newspapers/newspaper_news6_neu.gd
+res://Newspapers/newspaper_news6_con.tscn
+res://Newspapers/newspaper_news6_con.gd
+res://Newspapers/newspaper_news6_pro.gd
+res://Newspapers/newspaper_news6_pro.tscn
+res://Global/global.gd
+res://Newspapers/newspaper_news1_con.tscn
+res://Newspapers/newspaper_news1_con.gd
+res://Scene/Scene/main_scene_chapter3.gd
+res://Scene/Scene/end_scene.gd
+res://Scene/Scene/standby_screen.tscn

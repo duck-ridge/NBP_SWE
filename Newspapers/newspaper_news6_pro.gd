@@ -2,6 +2,7 @@ extends Node2D
 
 var report_text_num: int = 0
 var report_text1: String = "A U.S. soldier offers\nwater to a captured\nenemy, showing\ncompassion beyond\nthe battlefield—\na reminder that\nmercy can persist\neven in war."
+var allow_interact: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -14,17 +15,21 @@ func _process(delta):
 
 #悬浮ss
 func _on_area_2d_mouse_entered():
+	if allow_interact == false:
+		return
 	Global.emit_signal("newspaper_hang", "news6_pro")
-	self.scale = Vector2(1.2, 1.2)
+	self.scale = Vector2(1.0, 1.0)
 #点击
 func _on_area_2d_input_event(viewport, event, shape_idx):
+	if allow_interact == false:
+		return
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.is_pressed():
 			Global.emit_signal("newspaper_click", "news6_pro")
-			Global.emit_signal("change_progressbar_value", 25)
+			
 			
 
 			
 
 func _on_area_2d_mouse_exited():
-	self.scale = Vector2(1.0, 1.0)
+	self.scale = Vector2(0.8, 0.8)

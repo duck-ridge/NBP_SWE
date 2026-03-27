@@ -28,6 +28,7 @@ offset_right = 7.0
 offset_bottom = 7.0
 
 [node name="NewsPhotoEnvolop" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(1.15, 1.15)
 texture = ExtResource("3_kbyeu")
 metadata/_edit_group_ = true
@@ -41,8 +42,8 @@ texture = ExtResource("4_3r0ig")
 [node name="NewsPhoto" type="Sprite2D" parent="."]
 z_index = -1
 rotation = 1.5708
+scale = Vector2(0.8, 0.8)
 texture = ExtResource("5_k4iq6")
-metadata/_edit_group_ = true
 
 [node name="IndicatorA" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
 position = Vector2(-89, -105)
@@ -52,11 +53,13 @@ metadata/_edit_group_ = true
 texture = ExtResource("6_iuvcf")
 
 [node name="IndicatorB" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
-position = Vector2(2, 62)
+position = Vector2(2.49999, 28.75)
 metadata/_edit_group_ = true
 
 [node name="Photo2Riot" type="Sprite2D" parent="NewsPhoto/IndicatorB"]
+position = Vector2(2.76, -3.02)
 texture = ExtResource("7_ux78i")
+offset = Vector2(-2.75958, 36.3804)
 
 [node name="IndicatorC" type="Node2D" parent="NewsPhoto" groups=["Selectable"]]
 position = Vector2(0, 115)
@@ -120,6 +123,16 @@ text = "Note: Skirmish erupts between the troop and residents."
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="HintLabel" type="Label" parent="."]
+offset_left = -134.0
+offset_top = -433.0
+offset_right = 136.0
+offset_bottom = -410.0
+pivot_offset = Vector2(131, 4)
+text = "Hitta tre olika rapporteringsvinklar"
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [connection signal="input_event" from="PhotoOutcome/PhotoPro/PhotoProArea" to="." method="_on_photo_pro_area_input_event"]
 [connection signal="input_event" from="PhotoOutcome/PhotoCon/PhotoConArea" to="." method="_on_photo_con_area_input_event"]
